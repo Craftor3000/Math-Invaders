@@ -62,7 +62,9 @@ function verifie_solution(){
    let sol_poissons = somme(liste_poissons, des);
 
    if ((sol_trous == nb_trous.value) && (sol_ours == nb_ours.value) && (sol_poissons == nb_poissons)) {
-      resultat.textContent = "Gagné !";
+      resultats.textContent = "Gagné !";
+   } else {
+      resultats.textContent = "Perdu ! " + sol_trous.toString() + " ; " + sol_ours.toString() + " ; " + sol_poissons.toString();
    }
 
 }
