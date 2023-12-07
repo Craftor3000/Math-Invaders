@@ -56,13 +56,13 @@ function verifie_solution(){
 //la méthode Number()
 //Attention === est  un test d'égalité plus fort que ==
 //'6' == 6 renvoie true alors que '6' === 6 renvoie false
-
-   let sol_trous = somme(liste_trous, des)
-   let sol_ours = somme(liste_ours, des)
-   let sol_poissons = somme(liste_poissons, des)
+;
+   let sol_trous = somme(liste_trous, des);
+   let sol_ours = somme(liste_ours, des);
+   let sol_poissons = somme(liste_poissons, des);
 
    if ((sol_trous == nb_trous.value) && (sol_ours == nb_ours.value) && (sol_poissons == nb_poissons)) {
-      
+      resultat.textContent = "Gagné !";
    }
 
 }
