@@ -33,6 +33,7 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 - Création de la structure générale des fichiers
 - Rédaction du cahier des charges
 - Organisation des moyens de partage de code
+- Implémentation du logo du projet
 - Création de la structure générale du fichier HTML
 - Mise en forme temporaire avec le fichier CSS
 - Création des variables importantes dans le fichier JS
@@ -40,18 +41,18 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 
 ### Répartition du travail
 
-###### Clément
+##### Clément
 - Structure générale des menus (majeur)
 - Gestion des missiles (majeur)
 - Gestion des boss (majeur)
 - Gestion du score (mineur)
 
-###### Julien
+##### Julien
 - Embellissement général avec CSS (majeur)
 - Design graphique (majeur)
 - Paramètres (mineur)
 
-###### Maximilien
+##### Maximilien
 - Génération des vaisseaux aliens (majeur)
 - Gestion des mouvements des vaisseaux aliens (majeur)
 - Présentation ludique du jeu (mineur)
