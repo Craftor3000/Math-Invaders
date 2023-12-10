@@ -28,6 +28,9 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 
 
 ### Patch note
+10/12/23 : Maximilien : (maison)
+- Création d'un bouton qui fait apparaitre l'image du vaisseau ennemi, au mauvais endroits(je n'arrive pas à bien le placer)
+
 
 08/12/23 : Clément : (maison)
 - Création de la structure générale des fichiers
