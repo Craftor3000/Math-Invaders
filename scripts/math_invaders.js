@@ -1,5 +1,5 @@
 /* FONCTIONS */
-/*
+
 function debut_jeu(){
 	const image = new Image();
 	image.src ="images/ennemy1.png";
@@ -8,21 +8,21 @@ function debut_jeu(){
 		document.body.appendChild(image);
 	};
 };
-*/
+
 function affiche_regles() {
-	f_regles.visibility = "visible";
-	f_jeu.visibility = "hidden";
-	f_parametres.visibility = "hidden";
+	f_regles.style.visibility = "visible";
+	f_jeu.style.visibility = "hidden";
+	f_parametres.style.visibility = "hidden";
 };
 function affiche_jeu() {
-	f_regles.visibility = "hidden";
-	f_jeu.visibility = "visible";
-	f_parametres.visibility = "hidden";
+	f_regles.style.visibility = "hidden";
+	f_jeu.style.visibility = "visible";
+	f_parametres.style.visibility = "hidden";
 };
 function affiche_parametres() {
-	f_regles.visibility = "hidden";
-	f_jeu.visibility = "hidden";
-	f_parametres.visibility = "visible";
+	f_regles.style.visibility = "hidden";
+	f_jeu.style.visibility = "hidden";
+	f_parametres.style.visibility = "visible";
 };
 
 
