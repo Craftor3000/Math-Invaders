@@ -10,7 +10,7 @@ nav {
 	height: 10%;
 	position: absolute;
 	top: 0px;
-	background-color: grey;
+	background-color: #436d8c;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -25,7 +25,11 @@ article .fenetres {
 
 div.boutons {
 	max-width: 20%;
-	margin: 0px 50px 0px 50px;
+	min-width: 100px;
+	margin: 0px 50px 0px 40px;
+	background-color: #8194b3;
+	border-radius: 20px;
+	text-align: center;
 }
 
 img {
@@ -43,4 +47,12 @@ img {
 }
 #f_parametres {
 	visibility: hidden;
+}
+
+#espace_jeu {
+	height: 100%;
+	width: 30%;
+	background-color: #6a36d1;
+	border-radius: 10px;
+	margin: auto;
 }
