@@ -28,6 +28,14 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 
 
 ### Patch note
+
+13/12/23 : Clément : (maison)
+- Création de la structure générale de l'espace de jeu
+- Ajout d'un bouton commençant le jeu et faisant apparaitre les vaisseaux
+- Ajout d'une fonction arrêtant le jeu automatiquement en raison de certaines actions utilisateur
+- Ajout d'une dizaine de constantes et variables sélectionnant divers éléments
+- Effet de survol des boutons de navigation
+
 12/12/23 : Clément : (maison)
 - Organisation de la fenêtre de jeu
 - Embellissement de la barre de navigation
