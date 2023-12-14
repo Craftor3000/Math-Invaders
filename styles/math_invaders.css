@@ -81,12 +81,22 @@ img#logo {
 	background-color: blue;
 }
 
-#ennemis #joueur {
-	visibility: hidden;
-}
 #boss {
 	visibility: hidden;
 }
-#joueur , #ennemi_gauche , #ennemi_centre , #ennemi_droite {
+#joueur , #grp_gauche , #grp_centre , #grp_droite {
+	text-align: center;
+	align-items: center;
 	width: 50px;
+	height: 50px;
+	visibility: hidden;
+	color: white;
+}
+#ennemi_gauche , #ennemi_centre , #ennemi_droite {
+	width: 50px;
+	height: 50px;
+}
+#operation_gauche , #operation_centre , #operation_droite {
+	position: sticky;
+	z-index: 10;
 }
