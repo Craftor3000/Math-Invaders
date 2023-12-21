@@ -14,7 +14,7 @@
 
 	<nav>
 
-		<img src="images/logo.png" id="logo">
+		<img src="images/logo.png" id="logo" alt="Math Invaders">
 		<div class="boutons" id="regles">
 			<p>Règles du jeu</p>
 		</div>
@@ -42,30 +42,27 @@
 		<div class="fenetres" id="f_jeu">
 
 			<div id="entrees">
-				<div id="banniere">
-					<h2 id="texte_banniere">Appuyez pour commencer !</h2>
-					<p id="proprietes"></p>
-				</div>
 				<div id="commencer">
 					<p id="texte_commencer">Commencer !</p>
 				</div>
 			</div>
 			
 			<div id="espace_jeu">
-				<div id="grp_gauche">
-					<img src="images/ennemi.png" id="ennemi_gauche">
-					<p id="operation_gauche"></p>
+				<div id="ennemis">
+					<img src="images/ennemi.png" id="ennemi_gauche" alt="Ennemi à Gauche">
+					<img src="images/ennemi.png" id="ennemi_centre" alt="Ennemi au Centre">
+					<img src="images/ennemi.png" id="ennemi_droite" alt="Ennemi à Droite">
 				</div>
-				<div id="grp_centre">
-					<img src="images/ennemi.png" id="ennemi_centre">
-					<p id="operation_centre"></p>
-				</div>
-				<div id="grp_droite">
-					<img src="images/ennemi.png" id="ennemi_droite">
-					<p id="operation_droite"></p>
-				</div>
-				<img src="#" id="boss">
-				<img src="images/joueur.png" id="joueur">
+				<div id="espace_operation">	
+					<p id="op_g">N x N = ?</p>
+					<p id="op_c">N x N = ?</p>
+					<p id="op_d">N x N = ?</p>
+				</div>	
+						<img src="#" id="boss" alt="Le Boss">
+						<p id="operation_boss"></p>
+				
+				<img src="images/joueur.png" id="joueur" alt="Le Joueur">
+				<input type="text" id="input_j">
 			</div>
 
 			<div id="score">

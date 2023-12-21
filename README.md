@@ -28,6 +28,12 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 
 
 ### Patch note
+21/12/23 : Maximilien : (cours)
+- Mise en place de la location de tt les vaisseaux et textes
+- Ajout d'un input pour le joueur (aucune fonctionnalité pr l'instant)
+- Création d'une variable dé
+- Création d'une variable assignant les operations et leur résultats
+- Réorganisation des images et texte dans le html, ainsi que l'ajout des alt pr les images
 
 14/12/23 : Julien :
 - Création de la structure des paramètres
