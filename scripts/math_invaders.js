@@ -6,7 +6,6 @@ function nb_random() {
 
 function random_boss() {
 	return Math.floor(Math.random() * 20 + 1);
-
 }
 
 function debut_jeu(){
@@ -18,12 +17,7 @@ function debut_jeu(){
 		grp_centre.style.visibility = "visible";
 		grp_droite.style.visibility = "visible";		
 		joueur.style.visibility = "visible";
-		for (var i = 0; i < 3; i++) {
-			operations[i][0] = nb_random();
-			operations[i][1] = nb_random();
-		};
-		console.log(operations)
-		affiche_operation();
+		main_jeu();
 	};
 };
 
@@ -36,7 +30,49 @@ function fin_jeu() {
 		grp_centre.style.visibility = "hidden";
 		grp_droite.style.visibility = "hidden";
 		joueur.style.visibility = "hidden";
+		avancement = 0;
 	};
+};
+
+function timer() {
+    return new Promise((resolve, reject) => {
+	  	setTimeout(() => {
+	  		resolve(1);
+	  	}, 200);
+	});
+}
+
+
+async function main_jeu() {
+	while(jeu_en_cours) {
+		if(resolutions == 3) {
+			affichage_operations();
+			resolutions = 0;
+		}
+		avancement_vaisseaux();
+		await timer();
+
+		if (avancement == 300) {
+			fin_jeu();
+		}
+	}
+}
+
+function affichage_operations() {
+	for (var i = 0; i < 3; i++) {
+		operations[i][0] = nb_random();
+		operations[i][1] = nb_random();
+	};
+	droite.textContent = operations[0][0].toString() + " x " + operations[0][1].toString();
+	centre.textContent = operations[1][0].toString() + " x " + operations[1][1].toString();
+	gauche.textContent = operations[2][0].toString() + " x " + operations[2][1].toString();
+};
+
+function avancement_vaisseaux() {
+	avancement += 1;
+	grp_gauche.style.margin = avancement.toString() + "px 0px 0px 0px";
+	grp_centre.style.margin = avancement.toString() + "px 0px 0px 0px";
+	grp_droite.style.margin = avancement.toString() + "px 0px 0px 0px";
 };
 
 function affiche_regles() {
@@ -63,11 +99,7 @@ function affiche_parametres() {
 	fin_jeu();
 };
 
-function affiche_operation() {
-	droite.textContent = operations[0][0].toString() + " x " + operations[0][1].toString();
-	centre.textContent = operations[1][0].toString() + " x " + operations[1][1].toString();
-	gauche.textContent = operations[2][0].toString() + " x " + operations[2][1].toString();
-}
+
 
 /* MAIN */
 
@@ -94,14 +126,12 @@ const grp_droite = document.querySelector("#grp_droite");
 const gauche = document.querySelector("#operation_gauche");
 const centre = document.querySelector("#operation_centre");
 const droite = document.querySelector("#operation_droite");
-
-
-
-
 const boss = document.querySelector("#boss");
 
 var jeu_en_cours = false;
 var operations = [[0,0],[0,0],[0,0]];
+var avancement = 0;
+var resolutions = 3;
 
 
 regles.addEventListener("click", affiche_regles);

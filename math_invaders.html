@@ -14,7 +14,7 @@
 
 	<nav>
 
-		<img src="images/logo.png" id="logo">
+		<img src="images/logo.png" id="logo" alt="Math Invaders">
 		<div class="boutons" id="regles">
 			<p>Règles du jeu</p>
 		</div>
@@ -49,23 +49,27 @@
 				<div id="commencer">
 					<p id="texte_commencer">Commencer !</p>
 				</div>
+				<div id="resultat">
+					<label for="resultat">Résultat de l'opération</label>
+					<input type="number" name="reponse" required min="0" max="400">
+				</div>
 			</div>
 			
 			<div id="espace_jeu">
 				<div id="grp_gauche">
-					<img src="images/ennemi.png" id="ennemi_gauche">
+					<img src="images/ennemi.png" id="ennemi_gauche" alt="ennemi gauche">
 					<p id="operation_gauche"></p>
 				</div>
 				<div id="grp_centre">
-					<img src="images/ennemi.png" id="ennemi_centre">
+					<img src="images/ennemi.png" id="ennemi_centre" alt="ennemi centre">
 					<p id="operation_centre"></p>
 				</div>
 				<div id="grp_droite">
-					<img src="images/ennemi.png" id="ennemi_droite">
+					<img src="images/ennemi.png" id="ennemi_droite" alt="ennemi droite">
 					<p id="operation_droite"></p>
 				</div>
-				<img src="#" id="boss">
-				<img src="images/joueur.png" id="joueur">
+				<img src="#" id="boss" alt="boss">
+				<img src="images/joueur.png" id="joueur" alt="joueur">
 			</div>
 
 			<div id="score">

@@ -45,6 +45,14 @@ img#logo {
 	left: 0px;
 }
 
+#resultat {
+	height: 50px;
+	width: 200px;
+	position: absolute;
+	top: 50%;
+	display: grid;
+	justify-content: center;
+}
 
 
 #f_regles {
