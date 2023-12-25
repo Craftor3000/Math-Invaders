@@ -1,24 +1,21 @@
 /* FONCTIONS */
 
-function nb_random() {
-	return Math.floor(Math.random() * 10 + 1);
+function nb_random(n) {
+	return Math.floor(Math.random() * n + 1);
 }
 
-function random_boss() {
-	return Math.floor(Math.random() * 20 + 1);
+function timer(t) {
+    return new Promise((resolve, reject) => {
+	  	setTimeout(() => {
+	  		resolve(1);
+	  	}, t);
+	});
 }
 
 function debut_jeu(){
 	if (!jeu_en_cours) {
-		jeu_en_cours = true;
-		texte_commencer.textContent = "Phase 1";
-		texte_banniere.textContent = "Phase 1";
-		grp_gauche.style.visibility = "visible";
-		grp_centre.style.visibility = "visible";
-		grp_droite.style.visibility = "visible";		
 		joueur.style.visibility = "visible";
 		main_jeu();
-		selection_operation();
 	};
 };
 
@@ -32,85 +29,80 @@ function fin_jeu() {
 		grp_droite.style.visibility = "hidden";
 		joueur.style.visibility = "hidden";
 		avancement = 0;
+		elimination();
+		vaisseau_choisit = null;
+		vaisseaus_vivants = [false, false, false];
+		vitesse = 1000;
+		phase = 0;
 	};
 };
 
-function timer() {
-    return new Promise((resolve, reject) => {
-	  	setTimeout(() => {
-	  		resolve(1);
-	  	}, 200);
-	});
-}
-
 
 async function main_jeu() {
+	jeu_en_cours = true;
 	while(jeu_en_cours) {
 		if(resolutions == 3) {
 			affichage_operations();
+			apparition_vaisseaux();
+			phases();
 			resolutions = 0;
+			avancement = 0;
+		}
+		if (!vaisseau_choisit) {
+			selection_vaisseau();
 		}
 		avancement_vaisseaux();
-		await timer();
+		await timer(vitesse);
 
 		if (avancement == 300) {
 			fin_jeu();
+			break;
 		}
 	}
 }
 
+function apparition_vaisseaux() {
+	grp_gauche.style.visibility = "visible";
+	grp_centre.style.visibility = "visible";
+	grp_droite.style.visibility = "visible";
+}
 
+function phases() {
+	phase++;
+	texte_banniere.textContent = "Phase " + phase.toString();
+	vitesse /= 1.5;
+}
 
-function selection_operation() {
-	lequel = Math.floor(Math.random() * 3 + 1);
-	vaisseau_choisit = false;
-	while (vaisseau_choisit == false){
-		if (lequel == 1) {
-			if (vaisseau_d_vivant == true) {
-				gauche.style.border = "0px solid red";
-				centre.style.border = "0px solid red";
-				droite.style.border = "1px solid red";
-				reponse_recherchee = operations[0][0] * operations[0][1];
-				console.log(reponse_recherchee);
-				reponse_joueur.focus();
-				vaisseau_choisit = true;
-			}
+function selection_vaisseau() {
+	while (vaisseau_choisit == null){
+		proposition_vaisseau = nb_random(3) - 1;
+		if (vaisseaus_vivants[proposition_vaisseau]) {
+			groupes[proposition_vaisseau].style.border = "1px solid red";
+			reponse_joueur.focus();
+			vaisseau_choisit = proposition_vaisseau;
+			texte_commencer.textContent = operations[vaisseau_choisit][0].toString() + " x " + operations[vaisseau_choisit][1].toString();
 		}
-		if (lequel == 2) {
-			if (vaisseau_c_vivant == true) {
-				gauche.style.border = "0px solid red";
-				centre.style.border = "1px solid red";
-				droite.style.border = "0px solid red";
-				reponse_recherchee = operations[1][0] * operations[1][1];	
-				console.log(reponse_recherchee);
-				reponse_joueur.focus();
-				vaisseau_choisit = true;
-			}
-		}
-		if (lequel == 3) {
-			if (vaisseau_g_vivant == true) {
-				gauche.style.border = "1px solid red";
-				centre.style.border = "0px solid red";
-				droite.style.border = "0px solid red";
-				reponse_recherchee = operations[2][0] * operations[2][1];			
-				console.log(reponse_recherchee);	
-				reponse_joueur.focus();
-				vaisseau_choisit = true;
-			}
-		}
-		vaisseau_choisit = true
 	}
+}
+
+function valide() {
+	// ENVOI DU MISSILE
+	if (reponse_joueur.valueAsNumber == operations[vaisseau_choisit][0] * operations[vaisseau_choisit][1]) {
+		elimination();
+	}
+	reponse_joueur.valueAsNumber = NaN;
 }
 
 
 function affichage_operations() {
 	for (var i = 0; i < 3; i++) {
-		operations[i][0] = nb_random();
-		operations[i][1] = nb_random();
+		operations[i][0] = nb_random(10);
+		operations[i][1] = nb_random(10);
 	};
-	droite.textContent = operations[0][0].toString() + " x " + operations[0][1].toString();
+	gauche.textContent = operations[0][0].toString() + " x " + operations[0][1].toString();
 	centre.textContent = operations[1][0].toString() + " x " + operations[1][1].toString();
-	gauche.textContent = operations[2][0].toString() + " x " + operations[2][1].toString();
+	droite.textContent = operations[2][0].toString() + " x " + operations[2][1].toString();
+	vaisseaus_vivants = [true, true, true];
 };
 
 function avancement_vaisseaux() {
@@ -119,6 +111,14 @@ function avancement_vaisseaux() {
 	grp_centre.style.margin = avancement.toString() + "px 0px 0px 0px";
 	grp_droite.style.margin = avancement.toString() + "px 0px 0px 0px";
 };
+
+function elimination() {
+	vaisseaus_vivants[vaisseau_choisit] = false;
+	groupes[proposition_vaisseau].style.border = "0px";
+	groupes[vaisseau_choisit].style.visibility = "hidden";
+	vaisseau_choisit = null;
+	resolutions++;
+}
 
 function affiche_regles() {
 	f_regles.style.visibility = "visible";
@@ -144,29 +144,6 @@ function affiche_parametres() {
 	fin_jeu();
 };
 
-function valide() {
-	if (reponse_joueur.textContent = reponse_recherchee){
-		etape += 1;
-		reponse_joueur.textContent = ""
-		// avancement -= 50
-		if (lequel = 1){
-			vaisseau_d_vivant = false;
-			selection_operation();		
-		}
-		if (lequel = 2){
-			vaisseau_c_vivant = false;
-			selection_operation();
-		}
-		if (lequel = 3){
-			vaisseau_g_vivant = false;
-			selection_operation();
-		}
-	} 
-	else {
-		reponse_joueur.textContent = "C'EST FAUX !!!!!!!!!!!"
-	}
-}
-
 
 
 /* MAIN */
@@ -178,7 +155,7 @@ const commencer = document.querySelector("#commencer");
 const texte_commencer = document.querySelector("#texte_commencer");
 const texte_banniere = document.querySelector("#texte_banniere");
 const proprietes = document.querySelector("#proprietes");
-const reponse_joueur = document.querySelector("#entree_resultat")
+const reponse_joueur = document.querySelector("#entree_resultat");
 
 const f_regles = document.querySelector("#f_regles");
 const f_jeu = document.querySelector("#f_jeu");
@@ -192,22 +169,21 @@ const ennemi_droite = document.querySelector("#ennemi_droite");
 const grp_gauche = document.querySelector("#grp_gauche");
 const grp_centre = document.querySelector("#grp_centre");
 const grp_droite = document.querySelector("#grp_droite");
+const groupes = [grp_gauche, grp_centre, grp_droite];
 const gauche = document.querySelector("#operation_gauche");
 const centre = document.querySelector("#operation_centre");
 const droite = document.querySelector("#operation_droite");
 const boss = document.querySelector("#boss");
 
 var jeu_en_cours = false;
+var phase = 0;
+var vitesse = 1000;
 var operations = [[0,0],[0,0],[0,0]];
 var avancement = 0;
 var resolutions = 3;
-var reponse_recherchee = 0;
-var etape = 0;
-var vaisseau_choisit = false;
-var vaisseau_g_vivant = true;
-var vaisseau_c_vivant = true;
-var vaisseau_d_vivant = true;
-var lequel = 0;
+var vaisseau_choisit = null;
+var vaisseaus_vivants = [false, false, false];
+var proposition_vaisseau = 0;
 
 
 
@@ -216,8 +192,9 @@ jeu.addEventListener("click", affiche_jeu);
 parametres.addEventListener("click", affiche_parametres);
 commencer.addEventListener("click", debut_jeu);
 
-reponse_joueur.addEventListener("keydown",function (e){
-	if (e.key === "Enter") {
-		return valide();
-	}
+reponse_joueur.addEventListener("keydown", (e) => {
+	console.log(e.key);
+	if (e.key == "Enter") {
+		valide();
+	};
 });

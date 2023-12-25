@@ -28,10 +28,16 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 
 
 ### Patch note
-25/12/23 : Maximilien : (maison)(BRANCHE ALPHA)
+25/12/23 : Clément : (maison)
+- Optimisation des fonctions
+- Correction du traitement des entrées utilisateur
+- Ajout du système d'élimination des vaisseaux
+- Ajout du système de phases de combat, la vitesse des vaisseaux ennemis augmente au fur et à mesure des phases
+
+25/12/23 : Maximilien : (maison)
 - Ajout d'une fonction qui selectionne un vaisseau au hasard
 - Ajout d'une fonction qui vérifie la réponse donnée par le joueur
-- Ajout d'un détecteur pour activer la fonction précedente en appuyant sur la touche entrée (qui ne marche que deux fois ???)
+- Ajout d'un détecteur pour activer la fonction précedente en appuyant sur la touche entrée
 - Ajustement très léger des positions des vaisseaux
 
 24/12/23 : Clément : (maison)

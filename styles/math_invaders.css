@@ -116,9 +116,10 @@ img#logo {
 	text-align: center;
 	visibility: hidden;
 	color: white;
+	width: 70px;
+	height: 70px;
 }
 #joueur , #ennemi_gauche , #ennemi_centre , #ennemi_droite {
-	position: absolute;
 	width: 70px;
 	height: 70px;
 }
@@ -132,11 +133,10 @@ img#logo {
 	left: 5%;
 }
 #grp_droite {
-	right: 22%;
+	right: 5%;
 }
-#grp_centre {
-	right: 58.5%;
-}
+
 #joueur {
+	position: absolute;
 	bottom: 10%;
 }
