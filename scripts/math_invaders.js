@@ -18,6 +18,7 @@ function debut_jeu(){
 		grp_droite.style.visibility = "visible";		
 		joueur.style.visibility = "visible";
 		main_jeu();
+		selection_operation();
 	};
 };
 
@@ -57,6 +58,50 @@ async function main_jeu() {
 		}
 	}
 }
+
+
+
+function selection_operation() {
+	lequel = Math.floor(Math.random() * 3 + 1);
+	vaisseau_choisit = false;
+	while (vaisseau_choisit == false){
+		if (lequel == 1) {
+			if (vaisseau_d_vivant == true) {
+				gauche.style.border = "0px solid red";
+				centre.style.border = "0px solid red";
+				droite.style.border = "1px solid red";
+				reponse_recherchee = operations[0][0] * operations[0][1];
+				console.log(reponse_recherchee);
+				reponse_joueur.focus();
+				vaisseau_choisit = true;
+			}
+		}
+		if (lequel == 2) {
+			if (vaisseau_c_vivant == true) {
+				gauche.style.border = "0px solid red";
+				centre.style.border = "1px solid red";
+				droite.style.border = "0px solid red";
+				reponse_recherchee = operations[1][0] * operations[1][1];	
+				console.log(reponse_recherchee);
+				reponse_joueur.focus();
+				vaisseau_choisit = true;
+			}
+		}
+		if (lequel == 3) {
+			if (vaisseau_g_vivant == true) {
+				gauche.style.border = "1px solid red";
+				centre.style.border = "0px solid red";
+				droite.style.border = "0px solid red";
+				reponse_recherchee = operations[2][0] * operations[2][1];			
+				console.log(reponse_recherchee);	
+				reponse_joueur.focus();
+				vaisseau_choisit = true;
+			}
+		}
+		vaisseau_choisit = true
+	}
+}
+
 
 function affichage_operations() {
 	for (var i = 0; i < 3; i++) {
@@ -99,6 +144,29 @@ function affiche_parametres() {
 	fin_jeu();
 };
 
+function valide() {
+	if (reponse_joueur.textContent = reponse_recherchee){
+		etape += 1;
+		reponse_joueur.textContent = ""
+		// avancement -= 50
+		if (lequel = 1){
+			vaisseau_d_vivant = false;
+			selection_operation();		
+		}
+		if (lequel = 2){
+			vaisseau_c_vivant = false;
+			selection_operation();
+		}
+		if (lequel = 3){
+			vaisseau_g_vivant = false;
+			selection_operation();
+		}
+	} 
+	else {
+		reponse_joueur.textContent = "C'EST FAUX !!!!!!!!!!!"
+	}
+}
+
 
 
 /* MAIN */
@@ -110,6 +178,7 @@ const commencer = document.querySelector("#commencer");
 const texte_commencer = document.querySelector("#texte_commencer");
 const texte_banniere = document.querySelector("#texte_banniere");
 const proprietes = document.querySelector("#proprietes");
+const reponse_joueur = document.querySelector("#entree_resultat")
 
 const f_regles = document.querySelector("#f_regles");
 const f_jeu = document.querySelector("#f_jeu");
@@ -132,9 +201,23 @@ var jeu_en_cours = false;
 var operations = [[0,0],[0,0],[0,0]];
 var avancement = 0;
 var resolutions = 3;
+var reponse_recherchee = 0;
+var etape = 0;
+var vaisseau_choisit = false;
+var vaisseau_g_vivant = true;
+var vaisseau_c_vivant = true;
+var vaisseau_d_vivant = true;
+var lequel = 0;
+
 
 
 regles.addEventListener("click", affiche_regles);
 jeu.addEventListener("click", affiche_jeu);
 parametres.addEventListener("click", affiche_parametres);
 commencer.addEventListener("click", debut_jeu);
+
+reponse_joueur.addEventListener("keydown",function (e){
+	if (e.key === "Enter") {
+		return valide();
+	}
+});

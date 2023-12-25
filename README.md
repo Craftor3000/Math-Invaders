@@ -28,6 +28,12 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 
 
 ### Patch note
+25/12/23 : Maximilien : (maison)(BRANCHE ALPHA)
+- Ajout d'une fonction qui selectionne un vaisseau au hasard
+- Ajout d'une fonction qui vérifie la réponse donnée par le joueur
+- Ajout d'un détecteur pour activer la fonction précedente en appuyant sur la touche entrée (qui ne marche que deux fois ???)
+- Ajustement très léger des positions des vaisseaux
+
 24/12/23 : Clément : (maison)
 - Ajout des mouvements des vaisseaux
 - Ajout d'un input pour entrer les résultats
