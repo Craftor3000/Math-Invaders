@@ -28,6 +28,9 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 
 
 ### Patch note
+26/12/23 : Clément : (maison)
+- Correction du bug par lequel le jeu plantait lors du démarrage d'une deuxième partie
+
 25/12/23 : Clément : (maison)
 - Optimisation des fonctions
 - Correction du traitement des entrées utilisateur
@@ -89,7 +92,7 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 ##### Julien
 - Embellissement général avec CSS (majeur)
 - Design graphique (majeur)
-- Paramètres (mineur)
+- Paramètres (majeur)
 
 ##### Maximilien
 - Génération des vaisseaux aliens (majeur)

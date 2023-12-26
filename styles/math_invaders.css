@@ -119,7 +119,7 @@ img#logo {
 	width: 70px;
 	height: 70px;
 }
-#joueur , #ennemi_gauche , #ennemi_centre , #ennemi_droite {
+#ennemi_gauche , #ennemi_centre , #ennemi_droite {
 	width: 70px;
 	height: 70px;
 }
@@ -139,4 +139,6 @@ img#logo {
 #joueur {
 	position: absolute;
 	bottom: 10%;
+	width: 70px;
+	height: 91px;
 }

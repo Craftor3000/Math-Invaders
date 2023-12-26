@@ -28,12 +28,15 @@ function fin_jeu() {
 		grp_centre.style.visibility = "hidden";
 		grp_droite.style.visibility = "hidden";
 		joueur.style.visibility = "hidden";
+		grp_gauche.style.border = "0px";
+		grp_centre.style.border = "0px";
+		grp_droite.style.border = "0px";
 		avancement = 0;
-		elimination();
 		vaisseau_choisit = null;
 		vaisseaus_vivants = [false, false, false];
 		vitesse = 1000;
 		phase = 0;
+		resolutions = 3;
 	};
 };
 
