@@ -30,6 +30,7 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 ### Patch note
 26/12/23 : Clément : (maison)
 - Correction du bug par lequel le jeu plantait lors du démarrage d'une deuxième partie
+- Amélioration de la qualité de l'image du joueur
 
 26/12/23 : Maximilien : (maison)
 - Ajout d'une bannière faisant apparaitre le score du joueur
