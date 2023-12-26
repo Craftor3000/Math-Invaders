@@ -15,6 +15,8 @@ function timer(t) {
 function debut_jeu(){
 	if (!jeu_en_cours) {
 		joueur.style.visibility = "visible";
+		score.style.visibility = "visible";
+		jeu_en_cours = true;
 		main_jeu();
 	};
 };
@@ -37,17 +39,19 @@ function fin_jeu() {
 		vitesse = 1000;
 		phase = 0;
 		resolutions = 3;
+		score = 0;
+		ajout_score = 0;
 	};
 };
 
 
 async function main_jeu() {
-	jeu_en_cours = true;
 	while(jeu_en_cours) {
 		if(resolutions == 3) {
 			affichage_operations();
 			apparition_vaisseaux();
 			phases();
+			ajout_score += 100;
 			resolutions = 0;
 			avancement = 0;
 		}
@@ -92,6 +96,11 @@ function valide() {
 	// ENVOI DU MISSILE
 	if (reponse_joueur.valueAsNumber == operations[vaisseau_choisit][0] * operations[vaisseau_choisit][1]) {
 		elimination();
+		score.textContent = parseInt(score.textContent) + ajout_score;
+		console.log(score);
+	}
+	else {
+		score.textContent = parseInt(score.textContent) - ajout_score;
 	}
 	reponse_joueur.valueAsNumber = NaN;
 }
@@ -158,6 +167,7 @@ const commencer = document.querySelector("#commencer");
 const texte_commencer = document.querySelector("#texte_commencer");
 const texte_banniere = document.querySelector("#texte_banniere");
 const proprietes = document.querySelector("#proprietes");
+const score = document.querySelector("#score_joueur");
 const reponse_joueur = document.querySelector("#entree_resultat");
 
 const f_regles = document.querySelector("#f_regles");
@@ -187,6 +197,7 @@ var resolutions = 3;
 var vaisseau_choisit = null;
 var vaisseaus_vivants = [false, false, false];
 var proposition_vaisseau = 0;
+var ajout_score = 0;
 
 
 
