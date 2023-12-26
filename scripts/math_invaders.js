@@ -30,6 +30,7 @@ function fin_jeu() {
 		grp_centre.style.visibility = "hidden";
 		grp_droite.style.visibility = "hidden";
 		joueur.style.visibility = "hidden";
+		score.style.visibility = "hidden";
 		grp_gauche.style.border = "0px";
 		grp_centre.style.border = "0px";
 		grp_droite.style.border = "0px";
@@ -39,7 +40,7 @@ function fin_jeu() {
 		vitesse = 1000;
 		phase = 0;
 		resolutions = 3;
-		score = 0;
+		score.textContent = "0";
 		ajout_score = 0;
 	};
 };
@@ -96,13 +97,20 @@ function valide() {
 	// ENVOI DU MISSILE
 	if (reponse_joueur.valueAsNumber == operations[vaisseau_choisit][0] * operations[vaisseau_choisit][1]) {
 		elimination();
-		score.textContent = parseInt(score.textContent) + ajout_score;
-		console.log(score);
+		score.textContent = parseInt(score.textContent) + score_avec_avancement();
 	}
 	else {
 		score.textContent = parseInt(score.textContent) - ajout_score;
+		if (parseInt(score.textContent) < 0){
+			score.textContent = 0;
+		}
 	}
 	reponse_joueur.valueAsNumber = NaN;
+}
+
+function score_avec_avancement() {
+	let pourcentage_tps_restant = (300 - avancement) / 300;
+	return Math.round((ajout_score * pourcentage_tps_restant)/10) * 10;
 }
 
 
@@ -135,12 +143,14 @@ function elimination() {
 function affiche_regles() {
 	f_regles.style.visibility = "visible";
 	f_jeu.style.visibility = "hidden";
+	score.style.visibility = "hidden";
 	f_parametres.style.visibility = "hidden";
 	fin_jeu();
 };
 function affiche_jeu() {
 	f_regles.style.visibility = "hidden";
 	f_jeu.style.visibility = "visible";
+	score.style.visibility = "visible";
 	f_parametres.style.visibility = "hidden";
 	if (!jeu_en_cours) {
 		grp_gauche.style.visibility = "hidden";
@@ -152,6 +162,7 @@ function affiche_jeu() {
 function affiche_parametres() {
 	f_regles.style.visibility = "hidden";
 	f_jeu.style.visibility = "hidden";
+	score.style.visibility = "hidden";
 	f_parametres.style.visibility = "visible";
 	fin_jeu();
 };
