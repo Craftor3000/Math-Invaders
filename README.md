@@ -28,6 +28,14 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 
 
 ### Patch note
+26/12/23 : Maximilien : (maison)
+- Ajout d'une bannière faisant apparaitre le score du joueur
+- Modification de fonctions existantes pour calculer le score du joueur
+- Changement des dimension du vaisseau du joueur ainsi que la suppression de ses bords noirs
+
+26/12/23 : Julien : (maison)
+- Création du nouveau vaisseau du joueur
+
 25/12/23 : Clément : (maison)
 - Optimisation des fonctions
 - Correction du traitement des entrées utilisateur
