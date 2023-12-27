@@ -34,7 +34,7 @@ div.boutons {
 	border-radius: 15px;
 	text-align: center;
 	line-height: 5px;
-	color: white;
+	color: #380B61;
 }
 div.boutons:hover {
 	background-color: #A396C2;
@@ -105,6 +105,7 @@ tfoot {
 	top: 0px;
 	height: 100%;
 	width: 33%;
+	color: #58D3F7;
 }
 #espace_jeu {
 	position: sticky;
@@ -138,7 +139,7 @@ tfoot {
 	margin: auto;
 	border-radius: 20px;
 	border-color: black;
-	background-color: #708bb8;
+	background-color: #585858;
 }
 
 
@@ -184,7 +185,8 @@ tfoot {
 	height: 16%;
 	text-align: center;
 	align-items: center;
-	background-color: palegreen;
+	background-color: #708bb8;
 	border-radius: 10px;
 	margin-left: 66.66%;
+	color: white;
 }
