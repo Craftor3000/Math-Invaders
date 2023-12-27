@@ -15,13 +15,13 @@
 	<nav>
 
 		<img src="images/logo.png" id="logo" alt="Math Invaders">
-		<div class="boutons" id="regles">
+		<div id="regles">
 			<p>Règles du jeu</p>
 		</div>
-		<div class="boutons" id="jeu">
+		<div id="jeu">
 			<p>Jouer</p>
 		</div>
-		<div class="boutons" id="parametres">
+		<div id="parametres">
 			<p>Paramètres</p>
 		</div>
 
@@ -29,7 +29,7 @@
 
 	<article>
 
-		<div class="fenetres" id="f_regles">
+		<div id="f_regles">
 			<h2>Math Invaders : Règles du jeu</h2>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -39,7 +39,7 @@
 			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 		</div>
 
-		<div class="fenetres" id="f_jeu">
+		<div id="f_jeu">
 
 			<div id="entrees">
 				<div id="banniere">
@@ -52,6 +52,7 @@
 				<div id="resultat">
 					<label for="resultat">Résultat de l'opération</label>
 					<input type="number" name="reponse" required min="0" max="400" id="entree_resultat">
+					<button id="valider">Valider</button>
 				</div>
 			</div>
 			
@@ -68,7 +69,14 @@
 					<img src="images/ennemi.png" id="ennemi_droite" alt="ennemi droite">
 					<p id="operation_droite"></p>
 				</div>
-				<img src="#" id="boss" alt="boss">
+				<div id="grp_boss">
+					<img src="images/boss.png" id="boss" alt="boss">
+					<p id="boss_1"></p>
+					<p id="boss_2"></p>
+					<p id="boss_3"></p>
+					<p id="boss_4"></p>
+					<p id="boss_5"></p>
+				</div>
 				<img src="images/joueur.png" id="joueur" alt="joueur">
 			</div>
 
@@ -79,7 +87,7 @@
 
 		</div>
 
-		<div class="fenetres" id="f_parametres">
+		<div id="f_parametres">
 			
 		</div>
 
