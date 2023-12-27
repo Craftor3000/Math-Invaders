@@ -1,5 +1,4 @@
 body {
-	background-color: lightblue;
 	margin: 0px;
 	height: 100%;
 	overflow: hidden;
@@ -10,10 +9,10 @@ nav {
 	height: 10%;
 	position: absolute;
 	top: 0px;
-	background-color: #436d8c;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+    background-image: url("../images/fond_de_nav.jpg");
 }
 
 article , .fenetres {
@@ -57,6 +56,9 @@ img#logo {
 
 #f_regles {
 	visibility: visible;
+	background-image: url("../images/fond_du_accueil.jpg");
+	background-color: transparent;
+	font-family: serif;
 }
 #f_jeu {
 	visibility: hidden;
