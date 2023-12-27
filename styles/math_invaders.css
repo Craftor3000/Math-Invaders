@@ -1,5 +1,4 @@
 body {
-	background-color: lightblue;
 	margin: 0px;
 	height: 100%;
 	overflow: hidden;
@@ -10,10 +9,10 @@ nav {
 	height: 10%;
 	position: absolute;
 	top: 0px;
-	background-color: #436d8c;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+    background-image: url("../images/fond_de_nav.jpg");
 }
 
 article , article > div {
@@ -29,13 +28,16 @@ article > div {
 nav > div {
 	max-width: 20%;
 	min-width: 100px;
-	margin: 0px 50px 0px 50px;
-	background-color: #8194b3;
-	border-radius: 20px;
+	height: 40px;
+	margin: auto;
+	background-color: #806FA5;
+	border-radius: 15px;
 	text-align: center;
+	line-height: 5px;
+	color: white;
 }
 nav > div:hover {
-	background-color: #708bb8;
+	background-color: #A396C2;
 }
 
 img#logo {
@@ -54,11 +56,41 @@ img#logo {
 	justify-content: center;
 }
 
+table,
+td {
+  width: 100%;
+  border: 1px solid #333;
+  margin-bottom: 100px;
+  color:white;
+}
+th {
+  height: 30px;
+  font-size:40px;
+  color: white;
+}
+
+
+
+table.center {
+  height:500px;
+  margin-left: auto; 
+  margin-right: auto;
+  table-layout: fixed;
+ }
+thead,
+tfoot {
+  background-color: #333;
+  color: #fff;
+}
 
 #f_regles {
 	visibility: visible;
+	background-image: url("../images/fond_du_accueil.jpg");
+	background-color: transparent;
+	font-family: serif;
 }
 #f_jeu {
+	background-image: url("../images/arriere_jeu.jpg");
 	visibility: hidden;
 }
 #f_parametres {
@@ -80,7 +112,7 @@ img#logo {
 	justify-content: center;
 	height: 100%;
 	width: 33%;
-	background-color: #6a36d1;
+	background-image: url("../images/fond_jeu.gif") ;
 	border-radius: 10px;
 	margin: auto;
 }
@@ -92,20 +124,23 @@ img#logo {
 	height: 16%;
 	text-align: center;
 	align-items: center;
-	background-color: lightcoral;
+	background-image: url("../images/bouton_appuyé.gif");
 	border-radius: 10px;
-	margin-left: 5px;
+	margin-left: 10px;
+	color: #708bb8;
+	font-family: monospace;
 }
 #commencer {
 	position: absolute;
-	top: 20%;
+	top: 30%;
 	width: fit-content;
 	padding: 5px 30px;
 	margin: auto;
 	border-radius: 20px;
-	border-color: yellow;
-	background-color: blue;
+	border-color: black;
+	background-color: #708bb8;
 }
+
 
 #grp_boss {
 	visibility: hidden;
