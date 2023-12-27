@@ -60,7 +60,7 @@ async function main_jeu() {
 			avancement = 0;
 			temps_vaisseau = 0;
 
-			if (phase == 1) {
+			if (phase % 5 == 0) {
 				boss_en_cours = true;
 				affichage_operations_boss();
 				apparition_boss();

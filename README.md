@@ -34,6 +34,7 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 - Optimisation des variables
 - Optimisation du changement de fenêtre
 - Optimisation des sélecteurs CSS
+- Correction des erreurs d'accessibilité HTML
 
 26/12/23 : Clément : (maison)
 - Correction du bug par lequel le jeu plantait lors du démarrage d'une deuxième partie
