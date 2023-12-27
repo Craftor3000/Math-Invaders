@@ -110,7 +110,7 @@ tfoot {
 	justify-content: center;
 	height: 100%;
 	width: 33%;
-	background-color: #6a36d1;
+	background-image: url("../images/fond_jeu.gif") ;
 	border-radius: 10px;
 	margin: auto;
 }
