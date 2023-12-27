@@ -131,7 +131,7 @@ tfoot {
 	color: #708bb8;
 	font-family: monospace;
 }
-#commencer {
+div.bouton {
 	position: absolute;
 	top: 30%;
 	width: fit-content;
@@ -139,8 +139,13 @@ tfoot {
 	margin: auto;
 	border-radius: 20px;
 	border-color: black;
+	background-color: #2E2E2E;
+
+}
+div.bouton:hover {
 	background-color: #585858;
 }
+
 
 
 #boss {
