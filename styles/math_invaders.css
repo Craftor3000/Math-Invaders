@@ -34,6 +34,7 @@ div.boutons {
 	border-radius: 15px;
 	text-align: center;
 	line-height: 5px;
+	color: white;
 }
 div.boutons:hover {
 	background-color: #A396C2;
@@ -89,6 +90,7 @@ tfoot {
 	font-family: serif;
 }
 #f_jeu {
+	background-image: url("../images/arriere_jeu.jpg");
 	visibility: hidden;
 }
 #f_parametres {
