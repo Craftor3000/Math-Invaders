@@ -28,13 +28,15 @@ article , .fenetres {
 div.boutons {
 	max-width: 20%;
 	min-width: 100px;
-	margin: 0px 50px 0px 50px;
-	background-color: #8194b3;
-	border-radius: 20px;
+	height: 40px;
+	margin: auto;
+	background-color: #806FA5;
+	border-radius: 15px;
 	text-align: center;
+	line-height: 5px;
 }
 div.boutons:hover {
-	background-color: #708bb8;
+	background-color: #A396C2;
 }
 
 img#logo {
