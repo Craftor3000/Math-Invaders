@@ -124,19 +124,21 @@ tfoot {
 	height: 16%;
 	text-align: center;
 	align-items: center;
-	background-color: lightcoral;
+	background-image: url("../images/bouton_appuyé.gif");
 	border-radius: 10px;
-	margin-left: 5px;
+	margin-left: 10px;
+	color: #708bb8;
+	font-family: monospace;
 }
 #commencer {
 	position: absolute;
-	top: 20%;
+	top: 30%;
 	width: fit-content;
 	padding: 5px 30px;
 	margin: auto;
 	border-radius: 20px;
-	border-color: yellow;
-	background-color: blue;
+	border-color: black;
+	background-color: #708bb8;
 }
 
 
