@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr-FR">
 
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/x-icon" href="images/logo.png">
 	<link rel="stylesheet" type="text/css" href="styles/math_invaders.css">
-	<script type="text/javascript" src="scripts/math_invaders.js" async></script>
+	<script src="scripts/math_invaders.js" async></script>
 	<title>Math Invaders</title>
 </head>
 
@@ -15,13 +15,13 @@
 	<nav >
 
 		<img src="images/logo.png" id="logo" alt="Math Invaders">
-		<div class="boutons" id="regles">
+		<div id="regles">
 			<p>Règles du jeu</p>
 		</div>
-		<div class="boutons" id="jeu">
+		<div id="jeu">
 			<p>Jouer</p>
 		</div>
-		<div class="boutons" id="parametres">
+		<div id="parametres">
 			<p>Paramètres</p>
 		</div>
 
@@ -32,15 +32,18 @@
 		<div class="fenetres" id="f_regles">
 
 			<table class="center">
-  <thead>
-      <th colspan="2">Math invaders : regles du jeu</th>
-  </thead>
-  <tbody>
-      <td>les regles blablablablablab</td>
-      <td><img src="images/ennemi.jpg" id= "ennemi_centre">
-    		</td>
-  </tbody>
-</table>
+  				<thead>
+    				<tr>
+      					<th colspan="2">Math invaders : regles du jeu</th>
+    				</tr>
+  				</thead>
+  				<tbody>
+    				<tr>
+      					<td>les regles blablablablablab</td>
+      					<td><img src="images/ennemi.jpg" id= "ennemi_demo" alt="ennemi démo"></td>
+    				</tr>
+  				</tbody>
+			</table>
 			
 		</div>
 
@@ -51,12 +54,13 @@
 					<h2 id="texte_banniere">Appuyez pour commencer !</h2>
 					<p id="proprietes"></p>
 				</div>
-				<div class="bouton" id="commencer">
+				<div id="commencer">
 					<p id="texte_commencer">Commencer !</p>
 				</div>
 				<div id="resultat">
-					<label for="resultat">Résultat de l'opération</label>
+					<label for="entree_resultat">Résultat de l'opération</label>
 					<input type="number" name="reponse" required min="0" max="400" id="entree_resultat">
+					<button id="valider">Valider</button>
 				</div>
 			</div>
 			
@@ -73,7 +77,14 @@
 					<img src="images/ennemi.png" id="ennemi_droite" alt="ennemi droite">
 					<p id="operation_droite"></p>
 				</div>
-				<img src="#" id="boss" alt="boss">
+				<div id="grp_boss">
+					<img src="images/boss.png" id="boss" alt="boss">
+					<p id="boss_1"></p>
+					<p id="boss_2"></p>
+					<p id="boss_3"></p>
+					<p id="boss_4"></p>
+					<p id="boss_5"></p>
+				</div>
 				<img src="images/joueur.png" id="joueur" alt="joueur">
 			</div>
 

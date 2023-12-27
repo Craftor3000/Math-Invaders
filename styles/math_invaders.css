@@ -15,28 +15,28 @@ nav {
     background-image: url("../images/fond_de_nav.jpg");
 }
 
-article , .fenetres {
+article , article > div {
 	width: 100%;
 	height: 90%;
 	position: absolute;
 	bottom: 0px;
 }
-.fenetres {
+article > div {
 	height: 100%;
 }
 
-div.boutons {
+nav > div {
 	max-width: 20%;
 	min-width: 100px;
 	height: 40px;
 	margin: auto;
-	background-color: #806FA5;
+	background-color: #2E2E2E;
 	border-radius: 15px;
 	text-align: center;
 	line-height: 5px;
 	color: #380B61;
 }
-div.boutons:hover {
+nav > div:hover {
 	background-color: #A396C2;
 }
 
@@ -131,7 +131,7 @@ tfoot {
 	color: #708bb8;
 	font-family: monospace;
 }
-div.bouton {
+#commencer {
 	position: absolute;
 	top: 30%;
 	width: fit-content;
@@ -140,16 +140,27 @@ div.bouton {
 	border-radius: 20px;
 	border-color: black;
 	background-color: #2E2E2E;
-
 }
-div.bouton:hover {
+#commencer:hover {
 	background-color: #585858;
 }
 
-
-
-#boss {
+#grp_boss {
 	visibility: hidden;
+	position: absolute;
+	width: 100%;
+	height: 100px;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#boss {
+	width: 300px;
+	height: 100px;
+}
+#grp_boss > p {
+	margin: auto;
 }
 #grp_gauche , #grp_centre , #grp_droite {
 	position: absolute;
@@ -159,7 +170,7 @@ div.bouton:hover {
 	width: 70px;
 	height: 70px;
 }
-#ennemi_gauche , #ennemi_centre , #ennemi_droite {
+#ennemi_gauche , #ennemi_centre , #ennemi_droite , #ennemi_demo {
 	width: 70px;
 	height: 70px;
 }
@@ -177,6 +188,7 @@ div.bouton:hover {
 }
 
 #joueur {
+	visibility: hidden;
 	position: absolute;
 	bottom: 10%;
 	height:91px;

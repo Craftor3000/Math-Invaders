@@ -28,10 +28,13 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 
 
 ### Patch note
-26/12/23 : Maximilien : (maison)
-- Ajout d'une fonction ajustant le score obtenu par le joueur en fonction du temps mis à calculer une opération
-- Correction d'un défaut laissant le score atteindre des valeurs négatives
-- Correction de quelques erreurs d'affichage du score lié au changement d' onglets dans la fenêtre
+27/12/23 : Clément : (maison)
+- Ajout des boss, apparaissant une fois toutes les cinq phases
+- Ajout d'une limite variable de progression des vaisseaux ennemis
+- Optimisation des variables
+- Optimisation du changement de fenêtre
+- Optimisation des sélecteurs CSS
+- Correction des erreurs d'accessibilité HTML
 
 26/12/23 : Clément : (maison)
 - Correction du bug par lequel le jeu plantait lors du démarrage d'une deuxième partie
@@ -40,10 +43,11 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 26/12/23 : Maximilien : (maison)
 - Ajout d'une bannière faisant apparaitre le score du joueur
 - Modification de fonctions existantes pour calculer le score du joueur
-- Changement des dimension du vaisseau du joueur ainsi que la suppression de ses bords noirs
+- Ajout d'une fonction ajustant le score obtenu par le joueur en fonction du temps mis à calculer une opération
+- Correction d'un défaut laissant le score atteindre des valeurs négatives
 
 26/12/23 : Julien : (maison)
-- Création du nouveau vaisseau du joueur
+- Ajout de l'image du vaisseau du joueur
 
 25/12/23 : Clément : (maison)
 - Optimisation des fonctions
@@ -98,17 +102,18 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 ### Répartition du travail
 
 ##### Clément
-- Structure générale des menus (majeur)
-- Gestion des missiles (majeur)
-- Gestion des boss (majeur)
-- Gestion du score (mineur)
+- Structure générale des menus
+- Mouvements des vaisseaux aliens
+- Elimination des vaisseaux aliens
+- Gestion des boss
 
 ##### Julien
-- Embellissement général avec CSS (majeur)
-- Design graphique (majeur)
-- Paramètres (majeur)
+- Présentation ludique du jeu
+- Embellissement général avec CSS
+- Design graphique
+- Paramètres
 
 ##### Maximilien
-- Génération des vaisseaux aliens (majeur)
-- Gestion des mouvements des vaisseaux aliens (majeur)
-- Présentation ludique du jeu (mineur)
+- Génération des vaisseaux aliens
+- Gestion des entrées utilisateur
+- Gestion du score
