@@ -37,10 +37,22 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 28/12/23 : Maximilien : (maison)
 - Ajout des spécification de certaines fonctions
 
+28/12/23 : Julien : (maison)
+- creation du vaisseau boss en pixel
+- ajout des règles dans la page d'accueil
+- correction de bug dans la page paramètre 
+- ajout de bouton pour regler la difficulté
+
 27/12/23 : Maximilien : (maison)
 - Ajout de fonctions servant au fonctionnement du boss (verification_boss, selection_boss, elimination_boss)
 - Spécification de ces fonctions
 - Ajustement de la position du boss et de ses opérations
+
+27/12/23 : Julien : (maison)
+- embellissement de la page de jeu 
+- embellisement de la navigation 
+- ajout de vaisseau tombant dans la page d'accueil
+- commencement du reglage de la difficulté dans paramètre 
 
 27/12/23 : Clément : (maison)
 - Ajout des boss, apparaissant une fois toutes les cinq phases
@@ -62,12 +74,18 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 
 26/12/23 : Julien : (maison)
 - Ajout de l'image du vaisseau du joueur
+- creation du vaisseau ennemi
+- embellisement de la page des regles du jeu
+- tableau cree dans la page regle de jeu
 
 25/12/23 : Clément : (maison)
 - Optimisation des fonctions
 - Correction du traitement des entrées utilisateur
 - Ajout du système d'élimination des vaisseaux
 - Ajout du système de phases de combat, la vitesse des vaisseaux ennemis augmente au fur et à mesure des phases
+
+25/12/23 : julien : (maison)
+- creation du vaisseau joueur pixel
 
 25/12/23 : Maximilien : (maison)
 - Ajout d'une fonction qui selectionne un vaisseau au hasard
@@ -81,6 +99,9 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 
 21/12/23 : Maximilien : (cours)
 - Ajout des alt pour les images pour une meilleure accessibilité
+
+21/12/23 : Julien : (cours)
+- mise en place de la structure d'accueil
 
 15/12/23 : Clément : (maison)
 - Mise en place des vaisseaux et de leur opération
