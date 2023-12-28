@@ -190,7 +190,7 @@ tfoot {
 #joueur {
 	visibility: hidden;
 	position: absolute;
-	bottom: 10%;
+	bottom: 5%;
 	height:91px;
 	width:70px;
 }

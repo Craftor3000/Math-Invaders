@@ -1,10 +1,19 @@
 /* FONCTIONS */
 
 function nb_random(n) {
+	/* paramètre : un entier fixant la borne maximum de l'aléatoire
+		résultat : un entier aléatoire entre 1 et n 
+	*/
 	return Math.floor(Math.random() * n + 1);
 }
 
 function timer(t) {
+	/*	paramètre : un entier
+		résultat : succès de la promesse avec la valeur 1
+
+		Attend un temps t avant de résoudre la promesse
+		Cette méthode est utilisée comme un timer
+	*/
     return new Promise((resolve, reject) => {
 	  	setTimeout(() => {
 	  		resolve(1);
@@ -13,6 +22,11 @@ function timer(t) {
 }
 
 function debut_jeu(){
+	/*	paramètre : aucun
+		résultat : aucun
+
+		Initialise quelques valeurs avant de lancer la boucle principale du jeu
+	*/
 	if (!jeu_en_cours) {
 		joueur.style.visibility = "visible";
 		jeu_en_cours = true;
@@ -21,8 +35,15 @@ function debut_jeu(){
 };
 
 function fin_jeu() {
+	/*	paramètre : aucun
+		résultat : aucun
+
+		Attribue à un grand nombre de variable leur valeur par défault
+		Permet au jeu de se terminer en laissant la possibilité de le recommencer
+	*/
 	if (jeu_en_cours) {
-		jeu_en_cours = false
+		jeu_en_cours = false;
+		boss_en_cours = false;
 		texte_commencer.textContent = "Commencer !";
 		texte_banniere.textContent = "Appuyez pour commencer !";
 		grp_boss.style.visibility = "hidden";
@@ -51,6 +72,14 @@ function fin_jeu() {
 
 
 async function main_jeu() {
+	/*	paramètre : aucun
+		résultat : aucun
+
+		Boucle principale du jeu, fonctionnant jusqu'à ce qu'il se termine
+		Vérification permanente de la présence d'opérations à résoudre
+		Marque le rythme de l'avancement des vaisseaux ennemis
+		Gestion de la fin du jeu, lorsque l'avancement est trop grand
+	*/
 	while(jeu_en_cours) {
 
 		if(resolutions == 3) {
@@ -75,11 +104,12 @@ async function main_jeu() {
 			selection_vaisseau();
 		}
 
-		limite_avancement = espace.offsetHeight - (espace.offsetHeight / 10);
 		avancement_vaisseaux();
+		limite_avancement = (espace.offsetHeight * 0.95) - 165;
+
 		await timer(vitesse);
 
-		if (avancement == limite_avancement) {
+		if (avancement >= limite_avancement) {
 			fin_jeu();
 			break;
 		}
@@ -87,18 +117,34 @@ async function main_jeu() {
 }
 
 function phases() {
+	/*	paramètre : aucun
+		résultat : aucun
+
+		Marque le changement de phase
+		Augmente la vitesse des ennemis
+	*/
 	phase++;
 	texte_banniere.textContent = "Phase " + phase.toString();
 	vitesse /= 1.5;
 }
 
 function apparition_vaisseaux() {
+	/*	paramètre : aucun
+		résultat : aucun
+
+		Fait apparaitre tous les vaisseaux ennemis
+	*/
 	grp_gauche.style.visibility = "visible";
 	grp_centre.style.visibility = "visible";
 	grp_droite.style.visibility = "visible";
 }
 
 function apparition_boss() {
+	/*	paramètre : aucun
+		résultat : aucun
+
+		Fait apparaitre le boss et ses composants
+	*/
 	grp_boss.style.visibility = "visible";
 	boss.style.visibility = "visible";
 	boss_1.style.visibility = "visible";
@@ -109,6 +155,11 @@ function apparition_boss() {
 }
 
 function selection_vaisseau() {
+	/*	paramètre : aucun
+		résultat : aucun
+
+		Choisit un vaisseau ennemi dont l'opération va être à résoudre, parmis les vaisseaux encore vivants
+	*/
 	while (vaisseau_choisit == null){
 		proposition_vaisseau = nb_random(3) - 1;
 		if (vaisseaus_vivants[proposition_vaisseau]) {
@@ -121,13 +172,19 @@ function selection_vaisseau() {
 }
 
 function validation() {
-	if (reponse_joueur.valueAsNumber == operations[vaisseau_choisit][0] * operations[vaisseau_choisit][1]) {
+	/*	paramètre : aucun
+		résultat : aucun
+
+		Vérifie si la réponse du joueur est égale à celle demandée
+		Fait évoluer le score du joueur en fonction de la rapidité de réponse
+	*/
+	if (reponse_joueur.valueAsNumber == operations[vaisseau_choisit][0] + operations[vaisseau_choisit][1]) {
 		elimination();
 		score.textContent = parseInt(score.textContent) + calcul_score();
 		temps_vaisseau = 0;
 	}
 	else {
-		score.textContent = parseInt(score.textContent) - calcul_score();
+		score.textContent = parseInt(score.textContent) - (phase * 50) - Math.round(calcul_score() / 2);
 		if (parseInt(score.textContent) < 0){
 			score.textContent = 0;
 		}
@@ -136,6 +193,11 @@ function validation() {
 }
 
 function elimination() {
+	/*	paramètre : aucun
+		résultat : aucun
+
+		Elimine un vaisseau ennemi à la suite de la résolution de son équation
+	*/
 	vaisseaus_vivants[vaisseau_choisit] = false;
 	groupes[proposition_vaisseau].style.border = "0px";
 	groupes[vaisseau_choisit].style.visibility = "hidden";
@@ -144,8 +206,13 @@ function elimination() {
 }
 
 function calcul_score() {
+	/*	paramètre : aucun
+		résultat : un entier compris entre 0 et phase * 100
+
+		Calcule 
+	*/
 	let pourcentage_tps_restant = (limite_avancement - temps_vaisseau) / limite_avancement;
-	return Math.round(((phase * 100) * pourcentage_tps_restant) / 10) * 10;
+	return Math.round((phase * 100) * pourcentage_tps_restant);
 }
 
 
@@ -154,9 +221,9 @@ function affichage_operations() {
 		operations[i][0] = nb_random(10);
 		operations[i][1] = nb_random(10);
 	};
-	gauche.textContent = operations[0][0].toString() + " x " + operations[0][1].toString();
-	centre.textContent = operations[1][0].toString() + " x " + operations[1][1].toString();
-	droite.textContent = operations[2][0].toString() + " x " + operations[2][1].toString();
+	gauche.textContent = operations[0][0].toString() + " + " + operations[0][1].toString();
+	centre.textContent = operations[1][0].toString() + " + " + operations[1][1].toString();
+	droite.textContent = operations[2][0].toString() + " + " + operations[2][1].toString();
 	vaisseaus_vivants = [true, true, true];
 };
 
@@ -165,11 +232,11 @@ function affichage_operations_boss() {
 		operations_boss[i][0] = nb_random(10);
 		operations_boss[i][1] = nb_random(10);
 	};
-	boss_1.textContent = operations_boss[0][0].toString() + " x " + operations_boss[0][1].toString();
-	boss_2.textContent = operations_boss[1][0].toString() + " x " + operations_boss[1][1].toString();
-	boss_3.textContent = operations_boss[2][0].toString() + " x " + operations_boss[2][1].toString();
-	boss_4.textContent = operations_boss[3][0].toString() + " x " + operations_boss[3][1].toString();
-	boss_5.textContent = operations_boss[4][0].toString() + " x " + operations_boss[4][1].toString();
+	boss_1.textContent = operations_boss[0][0].toString() + " + " + operations_boss[0][1].toString();
+	boss_2.textContent = operations_boss[1][0].toString() + " + " + operations_boss[1][1].toString();
+	boss_3.textContent = operations_boss[2][0].toString() + " + " + operations_boss[2][1].toString();
+	boss_4.textContent = operations_boss[3][0].toString() + " + " + operations_boss[3][1].toString();
+	boss_5.textContent = operations_boss[4][0].toString() + " + " + operations_boss[4][1].toString();
 }
 
 function avancement_vaisseaux() {
@@ -250,7 +317,7 @@ var operations = [[0,0],[0,0],[0,0]];
 var operations_boss = [[0,0],[0,0],[0,0],[0,0],[0,0]]
 var avancement = 0;
 var temps_vaisseau = 0;
-var limite_avancement = espace.offsetHeight - (espace.offsetHeight / 10);
+var limite_avancement = (espace.offsetHeight * 0.95) - 165;
 var resolutions = 3;
 var vaisseau_choisit = null;
 var vaisseaus_vivants = [false, false, false];
