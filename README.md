@@ -28,6 +28,9 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 
 
 ### Patch note
+28/12/23 : Clément : (maison)
+- Ajout d'une animation présentant le jeu sur l'écran des règles
+
 27/12/23 : Maximilien : (maison)
 - Ajout de fonctions servant au fonctionnement du boss (verification_boss, selection_boss, elimination_boss)
 - Spécification de ces fonctions

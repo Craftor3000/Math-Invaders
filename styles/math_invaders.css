@@ -12,7 +12,7 @@ nav {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-    background-image: url("../images/fond_de_nav.jpg");
+	background-image: url("../images/fond_de_nav.jpg");
 }
 
 article , article > div {
@@ -56,32 +56,37 @@ img#logo {
 	justify-content: center;
 }
 
-table,
-td {
-  width: 100%;
-  border: 1px solid #333;
-  margin-bottom: 100px;
-  color:white;
+table, td {
+	width: 100%;
+	height: 100%;
+	color:white;
 }
+
 th {
-  height: 30px;
-  font-size:40px;
-  color: white;
+	height: 30px;
+	font-size:40px;
+	color: white;
 }
 
-
-
-table.center {
-  height:500px;
-  margin-left: auto; 
-  margin-right: auto;
-  table-layout: fixed;
+table {
+	height:500px;
+	margin-left: auto; 
+	margin-right: auto;
+	table-layout: fixed;
  }
-thead,
-tfoot {
-  background-color: #333;
-  color: #fff;
+
+thead, tfoot {
+	background-color: #333;
+	color: #fff;
 }
+
+#demo {
+	display: flex;
+	justify-content: center;
+}
+
+
+
 
 #f_regles {
 	visibility: visible;
@@ -98,6 +103,8 @@ tfoot {
 }
 
 
+
+
 #entrees {
 	position: absolute;
 	display: flex;
@@ -107,6 +114,7 @@ tfoot {
 	width: 33%;
 	color: #58D3F7;
 }
+
 #espace_jeu {
 	position: sticky;
 	display: flex;
@@ -131,6 +139,7 @@ tfoot {
 	color: #708bb8;
 	font-family: monospace;
 }
+
 #commencer {
 	position: absolute;
 	top: 30%;
@@ -141,9 +150,13 @@ tfoot {
 	border-color: black;
 	background-color: #2E2E2E;
 }
+
 #commencer:hover {
 	background-color: #585858;
 }
+
+
+
 
 #grp_boss {
 	visibility: hidden;
@@ -190,9 +203,12 @@ tfoot {
 	width: 70px;
 	height: 70px;
 }
-#ennemi_gauche , #ennemi_centre , #ennemi_droite , #ennemi_demo {
+#ennemi_gauche , #ennemi_centre , #ennemi_droite , .ennemi_demo {
 	width: 70px;
 	height: 70px;
+}
+.ennemi_demo {
+	margin: 0px 20px;
 }
 #operation_gauche , #operation_centre , #operation_droite {
 	position: absolute;
@@ -215,6 +231,13 @@ tfoot {
 	width:70px;
 }
 
+#joueur_demo {
+	position: absolute;
+	top: 550px;
+	height: 91px;
+	width: 70px;
+}
+
 #score {
 	position: absolute;
 	top: 0px;
@@ -235,9 +258,4 @@ tfoot {
 	width: 400px;
 }
 
-#ennemi_demo {
-	height: 30px;
-	width: 30 px;
-	right:200px ;
-	top:300px;
-} 
+

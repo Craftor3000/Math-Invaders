@@ -315,17 +315,21 @@ function avancement_vaisseaux() {
 
 
 function affiche_regles() {
+	fenetre = [true, false, false];
+	demo();
 	f_regles.style.visibility = "visible";
 	f_jeu.style.visibility = "hidden";
 	f_parametres.style.visibility = "hidden";
 	fin_jeu();
 };
 function affiche_jeu() {
+	fenetre = [false, true, true];
 	f_regles.style.visibility = "hidden";
 	f_jeu.style.visibility = "visible";
 	f_parametres.style.visibility = "hidden";
 };
 function affiche_parametres() {
+	fenetre = [false, false, true];
 	f_regles.style.visibility = "hidden";
 	f_jeu.style.visibility = "hidden";
 	f_parametres.style.visibility = "visible";
@@ -334,10 +338,15 @@ function affiche_parametres() {
 
 async function demo(){
 	let avance = 0;
-	while (avance < 300){
-		avance += 10
-		ennemi_demo.style.margin = avance.toString() + "px 0px 0px 0px";
-		await timer(1000);
+	while (fenetre[0]){
+		avance += 1
+		for (let i = ennemi_demo.length - 1; i >= 0; i--) {
+			ennemi_demo[i].style.margin = avance.toString() + "px 20px 0px 20px";
+		}
+		await timer(50);
+		if (avance == 350) {
+			avance = 0;
+		}
 	}
 }
 
@@ -360,6 +369,7 @@ const f_jeu = document.querySelector("#f_jeu");
 const f_parametres = document.querySelector("#f_parametres");
 const espace = document.querySelector("#espace_jeu");
 
+const ennemi_demo = document.querySelectorAll(".ennemi_demo");
 const joueur = document.querySelector("#joueur");
 const ennemi_gauche = document.querySelector("#ennemi_gauche");
 const ennemi_centre = document.querySelector("#ennemi_centre");
@@ -381,6 +391,7 @@ const boss_4 = document.querySelector("#boss_4");
 const boss_5 = document.querySelector("#boss_5");
 const groupes_boss = [boss_1, boss_2, boss_3, boss_4, boss_5];
 
+var fenetre = [true, false, false];
 var jeu_en_cours = false;
 var boss_en_cours = false;
 var phase = 0;
