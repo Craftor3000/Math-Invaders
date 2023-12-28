@@ -234,3 +234,10 @@ tfoot {
 	left: 200px;
 	width: 400px;
 }
+
+#ennemi_demo {
+	height: 30px;
+	width: 30 px;
+	right:200px ;
+	top:300px;
+} 
