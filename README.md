@@ -13,11 +13,11 @@ L’enfant pourra jouer via une page Web interactive ( html + css + JavaScript )
 ### Description
 
 Math Invaders est un jeu de type space invaders où il faut entrer le résultat de l'opération mathématique apparaissant sur les vaisseaux aliens arrivant en haut de l'écran. 
-A la validation d'un résultat, un missile contenant le résultat entré est propulsé vers le vaisseau alien indiqué. 
-Lors de l'impact, si le résultat est correct, le vaisseau alien disparaitra. Sinon, le missile n'aura aucun effet, et il faudra attendre 3 secondes avant de pouvoir relancer à nouveau un missile.
-Au fur et à mesure de la partie, les vaisseaux aliens avancent plus vite et portent des opérations de plus en plus dures.
+A la validation d'un résultat, si le résultat est correct, le vaisseau alien concerné disparaitra, sinon, il ne se passera rien.
+Le score de la partie est calculé en fonction du nombre d'opérations réalisées et du temps passé à les résoudre.
+Au fur et à mesure de la partie, les vaisseaux aliens avancent plus vite.
 De temps en temps, des boss pourront apparaitre. Ils nécessitent la résolution de plusieurs opérations, mais sont plus lents.
-La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge. Le score de partie sera alors affiché.
+La partie se termine lorsqu'un vaisseau alien parvient à toucher le vaisseau du joueur. Le score de la partie sera alors affiché.
 
 <img src="images/logo.png"
      alt="Logo"
@@ -26,19 +26,27 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 ### Solutions techniques
 
 
-
 ### Patch note
 28/12/23 : Clément : (maison)
 - Ajout d'une animation présentant le jeu sur l'écran des règles
+- Ajout des images des ennemis et du boss
+- Optimisation des vérifications de la boucle principale du jeu
+- Alignement des composants du boss
+- Rédaction du DOM
+- Optimisations des variables utilisées
+- Rangement des déclarations de variables
+- Ajout de quelques commentaires pour une meilleure compréhension 
 
 28/12/23 : Maximilien : (maison)
 - Ajout des spécification de certaines fonctions
+- Ajout d'un systeme de high-score
+- Réglage d'un bug avec la séléction des opérations du boss (mal optimisé mais ça marchait pas en utilisant les divs)
 
 28/12/23 : Julien : (maison)
-- creation du vaisseau boss en pixel
-- ajout des règles dans la page d'accueil
-- correction de bug dans la page paramètre 
-- ajout de boutons pour regler la difficulté 
+- Création du vaisseau boss en pixel
+- Ajout des règles dans la page d'accueil
+- Correction de bug dans la page paramètre 
+- Ajout de bouton pour régler la difficulté
 - ajout de la modification des addditions dans paramètre
 
 27/12/23 : Maximilien : (maison)
@@ -47,10 +55,10 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 - Ajustement de la position du boss et de ses opérations
 
 27/12/23 : Julien : (maison)
-- embellissement de la page de jeu 
-- embellisement de la navigation 
-- ajout de vaisseau tombant dans la page d'accueil
-- commencement du reglage de la difficulté dans paramètre 
+- Embellissement de la page de jeu 
+- Embellisement de la navigation 
+- Ajout de vaisseau tombant dans la page d'accueil
+- Commencement du réglage de la difficulté dans les paramètres
 
 27/12/23 : Clément : (maison)
 - Ajout des boss, apparaissant une fois toutes les cinq phases
@@ -72,9 +80,9 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 
 26/12/23 : Julien : (maison)
 - Ajout de l'image du vaisseau du joueur
-- creation du vaisseau ennemi
-- embellisement de la page des regles du jeu
-- tableau cree dans la page regle de jeu
+- Création du vaisseau ennemi
+- Embellisement de la page des règles du jeu
+- Tableau créé dans la page des règles du jeu
 
 25/12/23 : Clément : (maison)
 - Optimisation des fonctions
@@ -83,7 +91,7 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 - Ajout du système de phases de combat, la vitesse des vaisseaux ennemis augmente au fur et à mesure des phases
 
 25/12/23 : julien : (maison)
-- creation du vaisseau joueur pixel
+- Création du vaisseau joueur pixel
 
 25/12/23 : Maximilien : (maison)
 - Ajout d'une fonction qui selectionne un vaisseau au hasard

@@ -29,6 +29,7 @@ function debut_jeu(){
 */
 	if (!jeu_en_cours) {
 		joueur.style.visibility = "visible";
+		score.textContent = "0";
 		jeu_en_cours = true;
 		main_jeu();
 	};
@@ -60,6 +61,11 @@ function fin_jeu() {
 		grp_gauche.style.border = "0px";
 		grp_centre.style.border = "0px";
 		grp_droite.style.border = "0px";
+		boss_1.style.border = "0px";
+		boss_2.style.border = "0px";
+		boss_3.style.border = "0px";
+		boss_4.style.border = "0px";
+		boss_5.style.border = "0px";
 		avancement = 0;
 		vaisseau_choisit = null;
 		vaisseaus_vivants = [false, false, false];
@@ -68,6 +74,10 @@ function fin_jeu() {
 		vitesse = 1000;
 		phase = 0;
 		resolutions = 3;
+		if (parseInt(score.textContent) > hi_score) {
+			hi_score = parseInt(score.textContent);
+			meilleur_score.textContent = hi_score;
+		}	
 	};
 };
 
@@ -81,36 +91,22 @@ async function main_jeu() {
 	Marque le rythme de l'avancement des vaisseaux ennemis
 	Gestion de la fin du jeu, lorsque l'avancement est trop grand
 */
-	score.textContent = "0";
 	while(jeu_en_cours) {
-		if (!boss_en_cours) {
-			if(resolutions == 3) {
-				phases();
-				resolutions = 0;
-				avancement = 0;
-				temps_vaisseau = 0;
-				if (phase % 5 == 0) {
-					boss_en_cours = true;
-					affichage_operations_boss();
-					apparition_boss();
-				} 
-				else {
-					affichage_operations();
-					apparition_vaisseaux();
-				}
-			}
-		}
-		else{
-			if(resolutions == 5) {
-				phases();
-				resolutions = 0;
-				avancement = 0;
-				temps_vaisseau = 0;
-				boss_en_cours = false;
-				vaisseau_choisit = null;
+		if(resolutions == 3 && !boss_en_cours || resolutions == 5 && boss_en_cours) {
+			phases();
+			resolutions = 0;
+			avancement = 0;
+			temps_vaisseau = 0;
+			boss_en_cours = false;
+			boss.style.visibility = "hidden";
+			if (phase % 5 == 0) {
+				boss_en_cours = true;
+				affichage_operations_boss();
+				apparition_boss();
+			} 
+			else {
 				affichage_operations();
 				apparition_vaisseaux();
-				boss.style.visibility = "hidden"
 			}
 		}
 		if (!vaisseau_choisit && !boss_en_cours) {
@@ -121,7 +117,11 @@ async function main_jeu() {
 		}
 
 		avancement_vaisseaux();
-		limite_avancement = (espace.offsetHeight * 0.95) - 165;
+		if (boss_en_cours) {
+			limite_avancement = (espace.offsetHeight * 0.95) - 300;
+		} else {
+			limite_avancement = (espace.offsetHeight * 0.95) - 165;
+		}
 
 		await timer(vitesse);
 
@@ -141,7 +141,15 @@ function phases() {
 */
 	phase++;
 	texte_banniere.textContent = "Phase " + phase.toString();
-	vitesse /= 1.5;
+	if (vitesse > 30) {
+		vitesse /= 1.5;
+	}
+	if (phase % 5 == 0) {
+		vitesse -= 10;
+	}
+	if (phase % 5 == 1) {
+		vitesse += 10;
+	}
 }
 
 function apparition_vaisseaux() {
@@ -433,22 +441,26 @@ function mode_facile() {
 
 /* MAIN */
 
+// Boutons de navigation
 const regles = document.querySelector("#regles");
 const jeu = document.querySelector("#jeu");
 const parametres = document.querySelector("#parametres");
-const commencer = document.querySelector("#commencer");
-const texte_commencer = document.querySelector("#texte_commencer");
-const texte_banniere = document.querySelector("#texte_banniere");
-const proprietes = document.querySelector("#proprietes");
-const score = document.querySelector("#score_joueur");
-const reponse_joueur = document.querySelector("#entree_resultat");
-const valider = document.querySelector("#valider");
 
+// Fenêtres
 const f_regles = document.querySelector("#f_regles");
 const f_jeu = document.querySelector("#f_jeu");
 const f_parametres = document.querySelector("#f_parametres");
-const espace = document.querySelector("#espace_jeu");
 
+// Fenêtre de jeu
+const commencer = document.querySelector("#commencer");
+const texte_banniere = document.querySelector("#texte_banniere");
+const texte_commencer = document.querySelector("#texte_commencer");
+const reponse_joueur = document.querySelector("#entree_resultat");
+const valider = document.querySelector("#valider");
+const espace = document.querySelector("#espace_jeu");
+const score = document.querySelector("#score_joueur");
+
+// Images et groupes d'images de vaisseaux
 const ennemi_demo = document.querySelectorAll(".ennemi_demo");
 const joueur = document.querySelector("#joueur");
 const ennemi_gauche = document.querySelector("#ennemi_gauche");
@@ -462,6 +474,7 @@ const gauche = document.querySelector("#operation_gauche");
 const centre = document.querySelector("#operation_centre");
 const droite = document.querySelector("#operation_droite");
 
+// Boss
 const boss = document.querySelector("#boss");
 const grp_boss = document.querySelector("#grp_boss");
 const boss_1 = document.querySelector("#boss_1");
@@ -475,6 +488,7 @@ const difficile = document.querySelector("#difficile");
 const moyen = document.querySelector("#moyen");
 const facile = document.querySelector("#facile");
 
+// Variables autres
 var fenetre = [true, false, false];
 var jeu_en_cours = false;
 var boss_en_cours = false;
@@ -491,8 +505,9 @@ var vaisseaus_vivants = [false, false, false];
 var boss_vivant = [false, false, false, false, false];
 var proposition_vaisseau = 0;
 var proposition_boss = 0;
+var hi_score = 0;
 
-
+// Ecouteurs d'évènement
 document.addEventListener("DOMContentLoaded",demo);
 regles.addEventListener("click", affiche_regles);
 jeu.addEventListener("click", affiche_jeu);
