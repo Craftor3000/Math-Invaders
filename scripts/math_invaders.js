@@ -68,7 +68,6 @@ function fin_jeu() {
 		vitesse = 1000;
 		phase = 0;
 		resolutions = 3;
-		score.textContent = "0";
 	};
 };
 
@@ -82,6 +81,7 @@ async function main_jeu() {
 	Marque le rythme de l'avancement des vaisseaux ennemis
 	Gestion de la fin du jeu, lorsque l'avancement est trop grand
 */
+	score.textContent = "0";
 	while(jeu_en_cours) {
 		if (!boss_en_cours) {
 			if(resolutions == 3) {
@@ -182,7 +182,7 @@ function selection_vaisseau() {
 			groupes[proposition_vaisseau].style.border = "1px solid red";
 			reponse_joueur.focus();
 			vaisseau_choisit = proposition_vaisseau;
-			texte_commencer.textContent = operations[vaisseau_choisit][0].toString() + " x " + operations[vaisseau_choisit][1].toString();
+			texte_commencer.textContent = operations[vaisseau_choisit][0].toString() + " + " + operations[vaisseau_choisit][1].toString();
 		}
 	}
 }
@@ -201,7 +201,7 @@ function selection_boss() {
 			groupes_boss[proposition_boss].style.border = "1px solid red";
 			reponse_joueur.focus();
 			boss_choisit = proposition_boss;
-			texte_commencer.textContent = operations_boss[boss_choisit][0].toString() + " x " + operations_boss[boss_choisit][1].toString();
+			texte_commencer.textContent = operations_boss[boss_choisit][0].toString() + " + " + operations_boss[boss_choisit][1].toString();
 		}
 	}
 }
