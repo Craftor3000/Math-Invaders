@@ -203,7 +203,7 @@ function affiche_parametres() {
 
 async function demo(){
 	let avance = 0;
-	while (avance < 400){
+	while (avance < 300){
 		avance += 10
 		ennemi_demo.style.margin = avance.toString() + "px 0px 0px 0px";
 		await timer(1000);

@@ -59,7 +59,6 @@ img#logo {
 table,
 td {
   width: 100%;
-  border: 1px solid #333;
   margin-bottom: 100px;
   color:white;
 }
@@ -214,5 +213,12 @@ tfoot {
 	top: 100px;
 	left: 200px;
 	width: 400px;
-	
+
+}
+
+#ennemi_demo {
+	height: 30px;
+	width: 30 px;
+	right:200px ;
+	top:300px ;
 }
