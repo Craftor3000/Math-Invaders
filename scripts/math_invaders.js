@@ -228,7 +228,7 @@ function validation_boss() {
 /*	param	 : aucun
 	resultat : le score du joueur est augmenté si sa réponse est correcte, sinon il est diminué. Empêche aussi que le score est négatif
 */
-	if (reponse_joueur.valueAsNumber == operations_boss[boss_choisit][0] * operations_boss[boss_choisit][1]) {
+	if (reponse_joueur.valueAsNumber == operations_boss[boss_choisit][0] + operations_boss[boss_choisit][1]) {
  			elimination_boss();
 			score.textContent = parseInt(score.textContent) + calcul_score() * 2;
 			temps_vaisseau = 0;
