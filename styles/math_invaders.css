@@ -163,37 +163,25 @@ thead, tfoot {
 	position: absolute;
 	width: 100%;
 	height: 100px;
-	margin: auto;
+	display: flex;
 	justify-content: center;
-	align-items: center;
-	color: white;
 }
 #boss {
-	width: 400px;
-	height: 200px;
-	margin-left:3%;
+	width: 550px;
+	height: 225px;
 }
-#boss_1 {
-	margin-left: 4%;
-}
-#boss_2 {
-	margin-left:13%;
-}
-#boss_3 {
-	margin-left:13%;
-}
-#boss_4 {
-	margin-left:13%;
-}
-#boss_5 {
-	margin-left:10%;
-}
+
 #operation_boss {
-	border: 0px solid black;
-	margin: auto;
+	position: absolute;
+	top: 40px;
 	display: flex;
+	justify-content: center;
+	align-items: center;
 	text-align: center;
-	position: relative;
+	color: royalblue;
+}
+#operation_boss > p {
+	margin: 30px;
 }
 #grp_gauche , #grp_centre , #grp_droite {
 	position: absolute;

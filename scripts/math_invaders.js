@@ -29,6 +29,7 @@ function debut_jeu(){
 */
 	if (!jeu_en_cours) {
 		joueur.style.visibility = "visible";
+		score.textContent = "0";
 		jeu_en_cours = true;
 		main_jeu();
 	};
@@ -81,36 +82,22 @@ async function main_jeu() {
 	Marque le rythme de l'avancement des vaisseaux ennemis
 	Gestion de la fin du jeu, lorsque l'avancement est trop grand
 */
-	score.textContent = "0";
 	while(jeu_en_cours) {
-		if (!boss_en_cours) {
-			if(resolutions == 3) {
-				phases();
-				resolutions = 0;
-				avancement = 0;
-				temps_vaisseau = 0;
-				if (phase % 5 == 0) {
-					boss_en_cours = true;
-					affichage_operations_boss();
-					apparition_boss();
-				} 
-				else {
-					affichage_operations();
-					apparition_vaisseaux();
-				}
-			}
-		}
-		else{
-			if(resolutions == 5) {
-				phases();
-				resolutions = 0;
-				avancement = 0;
-				temps_vaisseau = 0;
-				boss_en_cours = false;
-				vaisseau_choisit = null;
+		if(resolutions == 3 && !boss_en_cours || resolutions == 5 && boss_en_cours) {
+			phases();
+			resolutions = 0;
+			avancement = 0;
+			temps_vaisseau = 0;
+			boss_en_cours = false;
+			boss.style.visibility = "hidden";
+			if (phase % 5 == 0) {
+				boss_en_cours = true;
+				affichage_operations_boss();
+				apparition_boss();
+			} 
+			else {
 				affichage_operations();
 				apparition_vaisseaux();
-				boss.style.visibility = "hidden"
 			}
 		}
 		if (!vaisseau_choisit && !boss_en_cours) {
@@ -121,7 +108,11 @@ async function main_jeu() {
 		}
 
 		avancement_vaisseaux();
-		limite_avancement = (espace.offsetHeight * 0.95) - 165;
+		if (boss_en_cours) {
+			limite_avancement = (espace.offsetHeight * 0.95) - 300;
+		} else {
+			limite_avancement = (espace.offsetHeight * 0.95) - 165;
+		}
 
 		await timer(vitesse);
 
@@ -141,7 +132,15 @@ function phases() {
 */
 	phase++;
 	texte_banniere.textContent = "Phase " + phase.toString();
-	vitesse /= 1.5;
+	if (vitesse > 30) {
+		vitesse /= 1.5;
+	}
+	if (phase % 5 == 0) {
+		vitesse -= 10;
+	}
+	if (phase % 5 == 1) {
+		vitesse += 10;
+	}
 }
 
 function apparition_vaisseaux() {
