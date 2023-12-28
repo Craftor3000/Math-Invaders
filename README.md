@@ -28,6 +28,11 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 
 
 ### Patch note
+27/12/23 : Maximilien : (maison)
+- Ajout de fonctions servant au fonctionnement du boss (verification_boss, selection_boss, elimination_boss)
+- Spécification de ces fonctions
+- Ajustement de la position du boss et de ses opérations
+
 27/12/23 : Clément : (maison)
 - Ajout des boss, apparaissant une fois toutes les cinq phases
 - Ajout d'une limite variable de progression des vaisseaux ennemis

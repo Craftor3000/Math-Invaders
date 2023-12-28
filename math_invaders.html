@@ -29,7 +29,7 @@
 
 	<article>
 
-		<div class="fenetres" id="f_regles">
+		<div id="f_regles">
 
 			<table class="center">
   				<thead>
@@ -52,7 +52,7 @@
 			
 		</div>
 
-		<div class="fenetres" id="f_jeu">
+		<div id="f_jeu">
 
 			<div id="entrees">
 				<div id="banniere">
@@ -84,11 +84,13 @@
 				</div>
 				<div id="grp_boss">
 					<img src="images/boss.png" id="boss" alt="boss">
-					<p id="boss_1"></p>
-					<p id="boss_2"></p>
-					<p id="boss_3"></p>
-					<p id="boss_4"></p>
-					<p id="boss_5"></p>
+					<div id="operation_boss">
+						<p id="boss_1"></p>
+						<p id="boss_2"></p>
+						<p id="boss_3"></p>
+						<p id="boss_4"></p>
+						<p id="boss_5"></p>
+					</div>
 				</div>
 				<img src="images/joueur.png" id="joueur" alt="joueur">
 			</div>
@@ -100,7 +102,7 @@
 
 		</div>
 
-		<div class="fenetres" id="f_parametres">
+		<div id="f_parametres">
   			<input type="range" min="1" max="100" value="50" class="slider" id="myRange" >
   			 <p>Value: <span id="myValue"></span></p>
   			<script>
@@ -111,7 +113,14 @@
 					slider.oninput = function() {
 				  output.innerHTML = this.value;
 				}
-				</script>
+			</script>
+			<p>
+				<a href="http://jigsaw.w3.org/css-validator/check/referer">
+			    <img style="border:0;width:88px;height:31px"
+			        src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+			        alt="CSS Valide !" />
+			    </a>
+			</p>
 		</div>
 
 	</article>

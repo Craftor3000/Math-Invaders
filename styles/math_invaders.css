@@ -59,6 +59,7 @@ img#logo {
 table,
 td {
   width: 100%;
+  border: 1px solid #333;
   margin-bottom: 100px;
   color:white;
 }
@@ -150,16 +151,36 @@ tfoot {
 	width: 100%;
 	height: 100px;
 	margin: auto;
-	display: flex;
 	justify-content: center;
 	align-items: center;
+	color: white;
 }
 #boss {
-	width: 300px;
-	height: 100px;
+	width: 400px;
+	height: 200px;
+	margin-left:3%;
 }
-#grp_boss > p {
+#boss_1 {
+	margin-left: 4%;
+}
+#boss_2 {
+	margin-left:13%;
+}
+#boss_3 {
+	margin-left:13%;
+}
+#boss_4 {
+	margin-left:13%;
+}
+#boss_5 {
+	margin-left:10%;
+}
+#operation_boss {
+	border: 0px solid black;
 	margin: auto;
+	display: flex;
+	text-align: center;
+	position: relative;
 }
 #grp_gauche , #grp_centre , #grp_droite {
 	position: absolute;
@@ -189,7 +210,7 @@ tfoot {
 #joueur {
 	visibility: hidden;
 	position: absolute;
-	bottom: 10%;
+	bottom: 5%;
 	height:91px;
 	width:70px;
 }
@@ -207,18 +228,16 @@ tfoot {
 	color: white;
 }
 
-
 #myRange {
 	position: absolute;
 	top: 100px;
 	left: 200px;
 	width: 400px;
-
 }
 
 #ennemi_demo {
 	height: 30px;
 	width: 30 px;
 	right:200px ;
-	top:300px ;
-}
+	top:300px;
+} 
