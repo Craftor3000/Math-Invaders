@@ -24,7 +24,19 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
      style="width: 100px; height: 100px;" />
 
 ### Solutions techniques
+- Pour l'affichage des différents menus, nous avons créé 3 divs qui regroupent les éléments que du menu. On les fait apparaitre et disparaitre selon
+la page que l'on veut afficher.
+La fonction debut_jeu() enclenche les méchanisme principaux du jeu, en mettant le score à 0, en rendant le joueur visible et en rendant la variable jeu_en_cours true. Cette fonction ne s'active que quand jeu_en_cours est false. Elle active la fonction main_jeu().
+- main_jeu() est une boucle while qui appelle les fonctions nécessaires à la bonne conduites du jeu. Elle vérifie si la vague actuelle d'ennemi est  présente ou pas. Si ce n'est pas le cas, elle la fait apparaitre, avec ses opérations choisies aléatoirement par la fonction affichage_operation(). Si 5 vagues on été battue, le boss apparait, avec ses opérations choisies aléatoirement par la fonction affichage_operation_boss(). Ensuite, une opérations, du boss ou des vaisseaux, est choisie au hasard par la fonction selection_vaisseau() ou selection_boss(), respectivement. Ensuite la fonction avancement_vaisseau() fais avancer les vaisseaux. Elle est appelée souvent grâce à un timer créé par la fonction timer(). Si un vaisseau atteint le seuil d'avancement. La fonction fin_jeu() est activée.
+- La fonction fin_jeu() remet toutes les variables à leurs états initiaux, le high-score est enregistré et affiché.
 
+
+
+
+
+Pour les opérations, on choisit deux nombres au hasard, qui vont être mis dans un tableau qui désigne un vaisseau, qui est mis dans un tableau qui
+regroupe toutes les opérations.
+Pour le mouvement des vaisseaux, on ajoute un nombre au margin des images
 
 
 ### Patch note
