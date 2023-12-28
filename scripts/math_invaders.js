@@ -297,8 +297,8 @@ function affichage_operations() {
 	Définie les opérations des vaisseaux à calculer aléatoirement
 */
 	for (var i = 0; i < 3; i++) {
-		operations[i][0] = nb_random(10);
-		operations[i][1] = nb_random(10);
+		operations[i][0] = nb_random(nombre_choisi);
+		operations[i][1] = nb_random(nombre_choisi);
 	};
 	gauche.textContent = operations[0][0].toString() + " + " + operations[0][1].toString();
 	centre.textContent = operations[1][0].toString() + " + " + operations[1][1].toString();
@@ -396,6 +396,40 @@ async function demo(){
 	}
 }
 
+function mode_difficile() {
+/*	paramètre : aucun
+	résultat : aucun
+
+	modifie valeur variable vitesse à 0 
+*/
+	vitesse = 80;
+	nombre_choisi = 30
+};
+
+function mode_moyen() {
+/*	paramètre : aucun
+	résultat : aucun
+
+	modifie valeur variable vitesse à 0 
+*/
+	vitesse = 300;
+	nombre_choisi = 20
+};
+
+function mode_facile() {
+/*	paramètre : aucun
+	résultat : aucun
+
+	modifie valeur variable vitesse à 0 
+*/
+	vitesse = 1000;
+	nombre_choisi = 10
+};
+
+
+
+
+
 
 /* MAIN */
 
@@ -437,11 +471,14 @@ const boss_4 = document.querySelector("#boss_4");
 const boss_5 = document.querySelector("#boss_5");
 const groupes_boss = [boss_1, boss_2, boss_3, boss_4, boss_5];
 
+const difficile = document.querySelector("#difficile");
+const moyen = document.querySelector("#moyen");
+const facile = document.querySelector("#facile");
+
 var fenetre = [true, false, false];
 var jeu_en_cours = false;
 var boss_en_cours = false;
 var phase = 0;
-var vitesse = 1000;
 var operations = [[0,0],[0,0],[0,0]];
 var operations_boss = [[0,0],[0,0],[0,0],[0,0],[0,0]]
 var avancement = 0;
@@ -461,7 +498,10 @@ regles.addEventListener("click", affiche_regles);
 jeu.addEventListener("click", affiche_jeu);
 parametres.addEventListener("click", affiche_parametres);
 commencer.addEventListener("click", debut_jeu);
-valider.addEventListener("click", validation)
+valider.addEventListener("click", validation);
+difficile.addEventListener("click", mode_difficile );
+moyen.addEventListener("click", mode_moyen );
+facile.addEventListener("click", mode_facile );
 
 reponse_joueur.addEventListener("keydown", (e) => {
 	if (e.key == "Enter") {

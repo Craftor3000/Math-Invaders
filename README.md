@@ -38,7 +38,8 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 - creation du vaisseau boss en pixel
 - ajout des règles dans la page d'accueil
 - correction de bug dans la page paramètre 
-- ajout de bouton pour regler la difficulté
+- ajout de boutons pour regler la difficulté 
+- ajout de la modification des addditions dans paramètre
 
 27/12/23 : Maximilien : (maison)
 - Ajout de fonctions servant au fonctionnement du boss (verification_boss, selection_boss, elimination_boss)

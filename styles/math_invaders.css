@@ -30,7 +30,7 @@ nav > div {
 	min-width: 100px;
 	height: 40px;
 	margin: auto;
-	background-color: #2E2E2E;
+	background-color: #8194b3;
 	border-radius: 15px;
 	text-align: center;
 	line-height: 5px;
@@ -99,6 +99,7 @@ thead, tfoot {
 	visibility: hidden;
 }
 #f_parametres {
+	background-image: url("../images/fond_du_accueil.jpg");
 	visibility: hidden;
 }
 
@@ -133,10 +134,10 @@ thead, tfoot {
 	height: 16%;
 	text-align: center;
 	align-items: center;
-	background-image: url("../images/bouton_appuyé.gif");
+	background-color: #708bb8;
 	border-radius: 10px;
 	margin-left: 10px;
-	color: #708bb8;
+	color: white;
 	font-family: monospace;
 }
 
@@ -257,5 +258,35 @@ thead, tfoot {
 	left: 200px;
 	width: 400px;
 }
+
+#boutons {
+	height: 100px;
+	width: 100px;
+
+}
+
+#f_parametres{
+	position: absolute;
+	top: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+}
+/* définit la taille des boutons */
+#f_parametres > div {
+	max-width: 20%;
+	min-width: 100px;
+	height: 40px;
+	margin: auto;
+	background-color: #F5F6CE;
+	border-radius: 15px;
+	text-align: center;
+	color: #380B61;
+}
+#f_parametres > div:hover {
+	background-color: #A396C2;
+}
+
 
 
