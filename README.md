@@ -13,11 +13,11 @@ L’enfant pourra jouer via une page Web interactive ( html + css + JavaScript )
 ### Description
 
 Math Invaders est un jeu de type space invaders où il faut entrer le résultat de l'opération mathématique apparaissant sur les vaisseaux aliens arrivant en haut de l'écran. 
-A la validation d'un résultat, un missile contenant le résultat entré est propulsé vers le vaisseau alien indiqué. 
-Lors de l'impact, si le résultat est correct, le vaisseau alien disparaitra. Sinon, le missile n'aura aucun effet, et il faudra attendre 3 secondes avant de pouvoir relancer à nouveau un missile.
-Au fur et à mesure de la partie, les vaisseaux aliens avancent plus vite et portent des opérations de plus en plus dures.
+A la validation d'un résultat, si le résultat est correct, le vaisseau alien concerné disparaitra, sinon, il ne se passera rien.
+Le score de la partie est calculé en fonction du nombre d'opérations réalisées et du temps passé à les résoudre.
+Au fur et à mesure de la partie, les vaisseaux aliens avancent plus vite.
 De temps en temps, des boss pourront apparaitre. Ils nécessitent la résolution de plusieurs opérations, mais sont plus lents.
-La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge. Le score de partie sera alors affiché.
+La partie se termine lorsqu'un vaisseau alien parvient à toucher le vaisseau du joueur. Le score de la partie sera alors affiché.
 
 <img src="images/logo.png"
      alt="Logo"
@@ -25,6 +25,93 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 
 ### Solutions techniques
 
+ARTICLE
+| - DIV id="f_regles" (-> const f_regles)
+|    | - TABLE
+|    |    | - THEAD
+|    |    |    | - TR
+|    |    |    |    | - TH colspan="2"
+|    |    |    |    |    | - #text: Math invaders : regles du jeu
+|    |    | - TBODY
+|    |    |    | - TR
+|    |    |    |    | - TD
+|    |    |    |    |    | - H2
+|    |    |    |    |    |    | - #text: Bienvenue dans Maths invaders, 
+|    |    |    |    |    | - P
+|    |    |    |    |    |   | - #text: Les
+|    |    |    |    |    |   | - B
+|    |    |    |    |    |   |   | - #text: Chiffre-x
+|    |    |    |    |    |   | -  #text: , extraterrestres connus pour coloniser des planètes sont venus de leur royaume, orthonormé, pour envahir notre Terre.
+|    |    |    |    |    | - P
+|    |    |    |    |    |   | - #text: Heureusement nous pouvons riposter grâce à notre vaisseau le
+|    |    |    |    |    |   | - B
+|    |    |    |    |    |   |   | - #text: Wing-Calculette
+|    |    |    |    |    |   | -  #text: dont vous êtes le pilote, représentant ainsi le dernier espoir de notre belle planète bleue.
+|    |    |    |    |    | - P
+|    |    |    |    |    |   | - #text: Pour détruire les vaisseaux ennemis rien de plus simple, entrer les coordonnées de tir, résultat de l'opération sur le vaisseau ennemi. Mais attention! Leur chef
+|    |    |    |    |    |   | 
+|    |    |    |    |    |   | - B
+|    |    |    |    |    |   |   | - #text: Integralix
+|    |    |    |    |    |   | - #text: qui dérive en ce moment dans l'espace pourrait venir à votre rencontre pour une bataille des plus épiques !
+|    |    |    |    |    | - P
+|    |    |    |    |    |   | - #text: Saurez-vous faire face à cette armée grandissante et surtout, saurez-vous tirer le plus rapidement possible ?
+|    |    |    |    | - TD id="demo"
+|    |    |    |    |    | - IMG src="images/joueur.png" id="joueur_demo" alt="joueur démo"
+|    |    |    |    |    | - IMG src="images/ennemi.png" class="ennemi_demo" alt="ennemi démo" (-> const ennemi_demo)
+|    |    |    |    |    | - IMG src="images/ennemi.png" class="ennemi_demo" alt="ennemi démo" (-> const ennemi_demo)
+|    |    |    |    |    | - IMG src="images/ennemi.png" class="ennemi_demo" alt="ennemi démo" (-> const ennemi_demo)
+| - DIV id="f_jeu" (-> const f_jeu)
+|    | - DIV id="entrees"
+|    |    | - DIV id="banniere"
+|    |    |    | - H2 id="texte_banniere" (-> const texte_banniere)
+|    |    |    |    | - #text: Appuyez pour commencer !
+|    |    | - DIV id="commencer" (-> const commencer)
+|    |    |    | - P id="texte_commencer" (-> const texte_commencer)
+|    |    |    |   | - #text: Commencer !
+|    |    | - DIV id="resultat"
+|    |    |    | - LABEL for="entree_resultat"
+|    |    |    |    | - #text: Résultat de l'opération
+|    |    |    | - INPUT type="number" name="reponse" required="" min="0" max="400" id="entree_resultat" (-> const reponse_joueur)
+|    |    |    | - BUTTON id="valider" (-> const valider)
+|    |    |    |   | - #text: Valider
+|    | - DIV id="espace_jeu" (-> const espace)
+|    |    | - DIV id="grp_gauche" (-> const grp_gauche)
+|    |    |    | - IMG src="images/ennemi.png" id="ennemi_gauche" alt="ennemi gauche" (-> const ennemi_gauche)
+|    |    |    | - P id="operation_gauche" (-> const gauche)
+|    |    | - DIV id="grp_centre" (-> const grp_centre)
+|    |    |    | - IMG src="images/ennemi.png" id="ennemi_centre" alt="ennemi centre" (-> const ennemi_centre)
+|    |    |    | - P id="operation_centre" (-> const centre)
+|    |    | - DIV id="grp_droite" (-> const grp_droite)
+|    |    |    | - IMG src="images/ennemi.png" id="ennemi_droite" alt="ennemi droite" (-> const ennemi_droite)
+|    |    |    | - P id="operation_droite" (-> const droite)
+|    |    | - DIV id="grp_boss" (-> const grp_boss)
+|    |    |    | - IMG src="images/boss.png" id="boss" alt="boss" (-> const boss)
+|    |    |    | - DIV id="operation_boss"
+|    |    |    |    | - P id="boss_1" (-> const boss_1)
+|    |    |    |    | - P id="boss_2" (-> const boss_2)
+|    |    |    |    | - P id="boss_3" (-> const boss_3)
+|    |    |    |    | - P id="boss_4" (-> const boss_4)
+|    |    |    |    | - P id="boss_5" (-> const boss_5)
+|    |    | - IMG src="images/joueur.png" id="joueur" alt="joueur" (-> const joueur)
+|    | - DIV id="score"
+|    |    | - H2 id="affichage_score"
+|    |    |    | - #text: Votre score :
+|    |    | - P id="score_joueur" (-> const score)
+|    |    |    | - #text: 0
+|    | - DIV id="hi_score"
+|    |    | - H2 id="affichage_hi_score"
+|    |    |    | - #text: Votre meilleur score :
+|    |    | - P id="meilleur_score"
+|    |    |    | - #text: 0
+| - DIV id="f_parametres" (-> const f_parametres)
+|    | - INPUT type="range" min="1" max="100" value="50" class="slider" id="myRange"
+|    | - P
+|    |    | - #text: Value:
+|    |    | - SPAN id="myValue"
+|    |    |    | - #text: 50
+|    | - P
+|    |    | - A href="http://jigsaw.w3.org/css-validator/check/referer"
+|    |    |    | - IMG style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valide !"
 
 
 ### Patch note
@@ -33,6 +120,10 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 - Ajout des images des ennemis et du boss
 - Optimisation des vérifications de la boucle principale du jeu
 - Alignement des composants du boss
+- Rédaction du DOM
+- Optimisations des variables utilisées
+- Rangement des déclarations de variables
+- Ajout de quelques commentaires pour une meilleure compréhension 
 
 28/12/23 : Maximilien : (maison)
 - Ajout des spécification de certaines fonctions

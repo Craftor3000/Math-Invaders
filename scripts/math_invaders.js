@@ -407,22 +407,26 @@ async function demo(){
 
 /* MAIN */
 
+// Boutons de navigation
 const regles = document.querySelector("#regles");
 const jeu = document.querySelector("#jeu");
 const parametres = document.querySelector("#parametres");
-const commencer = document.querySelector("#commencer");
-const texte_commencer = document.querySelector("#texte_commencer");
-const texte_banniere = document.querySelector("#texte_banniere");
-const proprietes = document.querySelector("#proprietes");
-const score = document.querySelector("#score_joueur");
-const reponse_joueur = document.querySelector("#entree_resultat");
-const valider = document.querySelector("#valider");
 
+// Fenêtres
 const f_regles = document.querySelector("#f_regles");
 const f_jeu = document.querySelector("#f_jeu");
 const f_parametres = document.querySelector("#f_parametres");
-const espace = document.querySelector("#espace_jeu");
 
+// Fenêtre de jeu
+const commencer = document.querySelector("#commencer");
+const texte_banniere = document.querySelector("#texte_banniere");
+const texte_commencer = document.querySelector("#texte_commencer");
+const reponse_joueur = document.querySelector("#entree_resultat");
+const valider = document.querySelector("#valider");
+const espace = document.querySelector("#espace_jeu");
+const score = document.querySelector("#score_joueur");
+
+// Images et groupes d'images de vaisseaux
 const ennemi_demo = document.querySelectorAll(".ennemi_demo");
 const joueur = document.querySelector("#joueur");
 const ennemi_gauche = document.querySelector("#ennemi_gauche");
@@ -436,6 +440,7 @@ const gauche = document.querySelector("#operation_gauche");
 const centre = document.querySelector("#operation_centre");
 const droite = document.querySelector("#operation_droite");
 
+// Boss
 const boss = document.querySelector("#boss");
 const grp_boss = document.querySelector("#grp_boss");
 const boss_1 = document.querySelector("#boss_1");
@@ -445,6 +450,7 @@ const boss_4 = document.querySelector("#boss_4");
 const boss_5 = document.querySelector("#boss_5");
 const groupes_boss = [boss_1, boss_2, boss_3, boss_4, boss_5];
 
+// Variables autres
 var fenetre = [true, false, false];
 var jeu_en_cours = false;
 var boss_en_cours = false;
@@ -464,7 +470,7 @@ var proposition_vaisseau = 0;
 var proposition_boss = 0;
 var hi_score = 0;
 
-
+// Ecouteurs d'évènement
 document.addEventListener("DOMContentLoaded",demo);
 regles.addEventListener("click", affiche_regles);
 jeu.addEventListener("click", affiche_jeu);
