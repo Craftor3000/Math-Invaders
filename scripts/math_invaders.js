@@ -61,6 +61,11 @@ function fin_jeu() {
 		grp_gauche.style.border = "0px";
 		grp_centre.style.border = "0px";
 		grp_droite.style.border = "0px";
+		boss_1.style.border = "0px";
+		boss_2.style.border = "0px";
+		boss_3.style.border = "0px";
+		boss_4.style.border = "0px";
+		boss_5.style.border = "0px";
 		avancement = 0;
 		vaisseau_choisit = null;
 		vaisseaus_vivants = [false, false, false];
@@ -69,6 +74,10 @@ function fin_jeu() {
 		vitesse = 1000;
 		phase = 0;
 		resolutions = 3;
+		if (parseInt(score.textContent) > hi_score) {
+			hi_score = parseInt(score.textContent);
+			meilleur_score.textContent = hi_score;
+		}	
 	};
 };
 
@@ -453,6 +462,7 @@ var vaisseaus_vivants = [false, false, false];
 var boss_vivant = [false, false, false, false, false];
 var proposition_vaisseau = 0;
 var proposition_boss = 0;
+var hi_score = 0;
 
 
 document.addEventListener("DOMContentLoaded",demo);

@@ -36,6 +36,8 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 
 28/12/23 : Maximilien : (maison)
 - Ajout des spécification de certaines fonctions
+- Ajout d'un systeme de high-score
+- Réglage d'un bug avec la séléction des opérations du boss (mal optimisé mais ça marchait pas en utilisant les divs)
 
 28/12/23 : Julien : (maison)
 - Création du vaisseau boss en pixel
