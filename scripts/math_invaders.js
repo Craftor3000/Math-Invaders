@@ -22,7 +22,7 @@ function debut_jeu(){
 
 function fin_jeu() {
 	if (jeu_en_cours) {
-		jeu_en_cours = false
+		jeu_en_cours = false;
 		texte_commencer.textContent = "Commencer !";
 		texte_banniere.textContent = "Appuyez pour commencer !";
 		grp_boss.style.visibility = "hidden";
@@ -42,6 +42,8 @@ function fin_jeu() {
 		avancement = 0;
 		vaisseau_choisit = null;
 		vaisseaus_vivants = [false, false, false];
+		boss_choisit = null;
+		boss_vivant = [false, false, false, false, false];
 		vitesse = 1000;
 		phase = 0;
 		resolutions = 3;
@@ -52,27 +54,41 @@ function fin_jeu() {
 
 async function main_jeu() {
 	while(jeu_en_cours) {
-
-		if(resolutions == 3) {
-
-			phases();
-			resolutions = 0;
-			avancement = 0;
-			temps_vaisseau = 0;
-
-			if (phase % 5 == 0) {
-				boss_en_cours = true;
-				affichage_operations_boss();
-				apparition_boss();
-
-			} else {
-				affichage_operations();
-				apparition_vaisseaux();
+		if (!boss_en_cours) {
+			if(resolutions == 3) {
+				phases();
+				resolutions = 0;
+				avancement = 0;
+				temps_vaisseau = 0;
+				if (phase % 5 == 0) {
+					boss_en_cours = true;
+					affichage_operations_boss();
+					apparition_boss();
+				} 
+				else {
+					affichage_operations();
+					apparition_vaisseaux();
+				}
 			}
 		}
-
+		else{
+			if(resolutions == 5) {
+				phases();
+				resolutions = 0;
+				avancement = 0;
+				temps_vaisseau = 0;
+				boss_en_cours = false;
+				vaisseau_choisit = null;
+				affichage_operations();
+				apparition_vaisseaux();
+				boss.style.visibility = "hidden"
+			}
+		}
 		if (!vaisseau_choisit && !boss_en_cours) {
 			selection_vaisseau();
+		}
+		else if (!boss_choisit && boss_en_cours){
+			selection_boss();
 		}
 
 		limite_avancement = espace.offsetHeight - (espace.offsetHeight / 10);
@@ -99,6 +115,10 @@ function apparition_vaisseaux() {
 }
 
 function apparition_boss() {
+/*  param	: aucun
+	resultat: le boss et ses operations deviennent visible
+*/
+
 	grp_boss.style.visibility = "visible";
 	boss.style.visibility = "visible";
 	boss_1.style.visibility = "visible";
@@ -120,6 +140,22 @@ function selection_vaisseau() {
 	}
 }
 
+function selection_boss() {
+/*	param	 : aucun
+	resultat : une des opérations du boss est entourée en rouge, et son résultat est enregistré
+*/
+
+	while (boss_choisit == null){
+		proposition_boss = nb_random(5) - 1;
+		if (boss_vivant[proposition_boss]) {
+			groupes_boss[proposition_boss].style.border = "1px solid red";
+			reponse_joueur.focus();
+			boss_choisit = proposition_boss;
+			texte_commencer.textContent = operations_boss[boss_choisit][0].toString() + " x " + operations_boss[boss_choisit][1].toString();
+		}
+	}
+}
+
 function validation() {
 	if (reponse_joueur.valueAsNumber == operations[vaisseau_choisit][0] * operations[vaisseau_choisit][1]) {
 		elimination();
@@ -128,19 +164,50 @@ function validation() {
 	}
 	else {
 		score.textContent = parseInt(score.textContent) - calcul_score();
-		if (parseInt(score.textContent) < 0){
-			score.textContent = 0;
-		}
 	}
 	reponse_joueur.valueAsNumber = NaN;
+	if (parseInt(score.textContent) < 0){
+				score.textContent = 0;
+	}
 }
 
+function validation_boss() {
+/*	param	 : aucun
+	resultat : le score du joueur est augmenté si sa réponse est correcte, sinon il est diminué. Empêche aussi que le score est négatif
+*/
+	if (reponse_joueur.valueAsNumber == operations_boss[boss_choisit][0] * operations_boss[boss_choisit][1]) {
+ 			elimination_boss();
+			score.textContent = parseInt(score.textContent) + calcul_score() * 2;
+			temps_vaisseau = 0;
+		}
+		else {
+			score.textContent = parseInt(score.textContent) - calcul_score();
+		}
+	reponse_joueur.valueAsNumber = NaN;
+	if (parseInt(score.textContent) < 0){
+				score.textContent = 0;
+	}
+}
+	
 function elimination() {
 	vaisseaus_vivants[vaisseau_choisit] = false;
 	groupes[proposition_vaisseau].style.border = "0px";
 	groupes[vaisseau_choisit].style.visibility = "hidden";
 	vaisseau_choisit = null;
+	resolutions++
+}
+
+function elimination_boss() {
+/*	param	 : aucun
+	resultat : l'opération actuellement choisie est rendu invisible, la variable boss_choisit est mise à 'null' pour se faire relancer par 
+			   selection_boss
+*/
+	boss_vivant[boss_choisit] = false;
+	groupes_boss[proposition_boss].style.border = "0px";
+	groupes_boss[boss_choisit].style.visibility = "hidden";
+	boss_choisit = null;
 	resolutions++;
+
 }
 
 function calcul_score() {
@@ -170,6 +237,7 @@ function affichage_operations_boss() {
 	boss_3.textContent = operations_boss[2][0].toString() + " x " + operations_boss[2][1].toString();
 	boss_4.textContent = operations_boss[3][0].toString() + " x " + operations_boss[3][1].toString();
 	boss_5.textContent = operations_boss[4][0].toString() + " x " + operations_boss[4][1].toString();
+	boss_vivant = [true, true, true, true, true]
 }
 
 function avancement_vaisseaux() {
@@ -253,9 +321,11 @@ var temps_vaisseau = 0;
 var limite_avancement = espace.offsetHeight - (espace.offsetHeight / 10);
 var resolutions = 3;
 var vaisseau_choisit = null;
+var boss_choisit = null;
 var vaisseaus_vivants = [false, false, false];
 var boss_vivant = [false, false, false, false, false];
 var proposition_vaisseau = 0;
+var proposition_boss = 0;
 
 
 
@@ -267,6 +337,11 @@ valider.addEventListener("click", validation)
 
 reponse_joueur.addEventListener("keydown", (e) => {
 	if (e.key == "Enter") {
-		validation();
+		if(!boss_en_cours) {
+			validation();
+		}
+		else{
+			validation_boss();
+		} 
 	};
 });
