@@ -268,6 +268,14 @@ function affiche_parametres() {
 	fin_jeu();
 };
 
+async function demo(){
+	let avance = 0;
+	while (avance < 400){
+		avance += 10
+		ennemi_demo.style.margin = avance.toString() + "px 0px 0px 0px";
+		await timer(1000);
+	}
+}
 
 
 /* MAIN */
@@ -325,7 +333,7 @@ var boss_vivant = [false, false, false, false, false];
 var proposition_vaisseau = 0;
 
 
-
+document.addEventListener("DOMContentLoaded",demo);
 regles.addEventListener("click", affiche_regles);
 jeu.addEventListener("click", affiche_jeu);
 parametres.addEventListener("click", affiche_parametres);

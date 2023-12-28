@@ -29,7 +29,7 @@
 
 	<article>
 
-		<div class="fenetres" id="f_regles">
+		<div id="f_regles">
 
 			<table class="center">
   				<thead>
@@ -39,7 +39,12 @@
   				</thead>
   				<tbody>
     				<tr>
-      					<td>les regles blablablablablab</td>
+      					<td> <h2>Bienvenue dans Maths invaders, </h2>
+      					<p>Les <b>Chiffre-x</b>, extraterrestres connus pour coloniser des plan&egrave;tes sont venus de leur royaume, orthonorm&eacute;, pour envahir notre Terre.</p> 
+      					<p>Heureusement nous pouvons riposter gr&acirc;ce &agrave; notre vaisseau le <b>Wing-Calculette</b> dont vous &ecirc;tes le pilote, repr&eacute;sentant ainsi le dernier espoir de notre belle plan&eagrave;te bleue.</p>
+      					<p>Pour d&eacute;truire les vaisseaux ennemis rien de plus simple, entrer les coordonn&eacute;es de tir, r&eacute;sultat de la multiplication sur le vaisseau ennemi. Mais attention! Leur chef <b>Integralix</b> qui d&eacute;rive en ce moment dans l'espace pourrait venir vous combattre.</p> 
+      					<p>Saurez-vous faire fasse &agrave; cette arm&eacute;e grandissante et surtout serez-vous pr&ecirc;t &agrave; tirer?</p>  
+      					</td>
       					<td><img src="images/ennemi.jpg" id= "ennemi_demo" alt="ennemi démo"></td>
     				</tr>
   				</tbody>
@@ -47,7 +52,7 @@
 			
 		</div>
 
-		<div class="fenetres" id="f_jeu">
+		<div id="f_jeu">
 
 			<div id="entrees">
 				<div id="banniere">
@@ -95,7 +100,18 @@
 
 		</div>
 
-		<div class="fenetres" id="f_parametres">
+		<div id="f_parametres">
+  			<input type="range" min="1" max="100" value="50" class="slider" id="myRange" >
+  			 <p>Value: <span id="myValue"></span></p>
+  			<script>
+					var slider = document.getElementById("myRange");
+					var output = document.getElementById("myValue");
+					output.innerHTML = slider.value;
+
+					slider.oninput = function() {
+				  output.innerHTML = this.value;
+				}
+			</script>
 			<p>
 				<a href="http://jigsaw.w3.org/css-validator/check/referer">
 			    <img style="border:0;width:88px;height:31px"
