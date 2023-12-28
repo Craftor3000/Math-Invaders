@@ -201,7 +201,14 @@ function affiche_parametres() {
 	fin_jeu();
 };
 
-
+async function demo(){
+	let avance = 0;
+	while (avance < 400){
+		avance += 10
+		ennemi_demo.style.margin = avance.toString() + "px 0px 0px 0px";
+		await timer(1000);
+	}
+}
 
 /* MAIN */
 
@@ -221,6 +228,7 @@ const f_jeu = document.querySelector("#f_jeu");
 const f_parametres = document.querySelector("#f_parametres");
 const espace = document.querySelector("#espace_jeu");
 
+const ennemi_demo = document.querySelector("#ennemi_demo");
 const joueur = document.querySelector("#joueur");
 const ennemi_gauche = document.querySelector("#ennemi_gauche");
 const ennemi_centre = document.querySelector("#ennemi_centre");
@@ -259,6 +267,7 @@ var proposition_vaisseau = 0;
 
 
 
+document.addEventListener("DOMContentLoaded",demo);
 regles.addEventListener("click", affiche_regles);
 jeu.addEventListener("click", affiche_jeu);
 parametres.addEventListener("click", affiche_parametres);

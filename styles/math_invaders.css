@@ -207,3 +207,12 @@ tfoot {
 	margin-left: 66.66%;
 	color: white;
 }
+
+
+#myRange {
+	position: absolute;
+	top: 100px;
+	left: 200px;
+	width: 400px;
+	
+}
