@@ -38,10 +38,10 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 - Ajout des spécification de certaines fonctions
 
 28/12/23 : Julien : (maison)
-- creation du vaisseau boss en pixel
-- ajout des règles dans la page d'accueil
-- correction de bug dans la page paramètre 
-- ajout de bouton pour regler la difficulté
+- Création du vaisseau boss en pixel
+- Ajout des règles dans la page d'accueil
+- Correction de bug dans la page paramètre 
+- Ajout de bouton pour régler la difficulté
 
 27/12/23 : Maximilien : (maison)
 - Ajout de fonctions servant au fonctionnement du boss (verification_boss, selection_boss, elimination_boss)
@@ -49,10 +49,10 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 - Ajustement de la position du boss et de ses opérations
 
 27/12/23 : Julien : (maison)
-- embellissement de la page de jeu 
-- embellisement de la navigation 
-- ajout de vaisseau tombant dans la page d'accueil
-- commencement du reglage de la difficulté dans paramètre 
+- Embellissement de la page de jeu 
+- Embellisement de la navigation 
+- Ajout de vaisseau tombant dans la page d'accueil
+- Commencement du réglage de la difficulté dans les paramètres
 
 27/12/23 : Clément : (maison)
 - Ajout des boss, apparaissant une fois toutes les cinq phases
@@ -74,9 +74,9 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 
 26/12/23 : Julien : (maison)
 - Ajout de l'image du vaisseau du joueur
-- creation du vaisseau ennemi
-- embellisement de la page des regles du jeu
-- tableau cree dans la page regle de jeu
+- Création du vaisseau ennemi
+- Embellisement de la page des règles du jeu
+- Tableau créé dans la page des règles du jeu
 
 25/12/23 : Clément : (maison)
 - Optimisation des fonctions
@@ -85,7 +85,7 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher la ligne rouge
 - Ajout du système de phases de combat, la vitesse des vaisseaux ennemis augmente au fur et à mesure des phases
 
 25/12/23 : julien : (maison)
-- creation du vaisseau joueur pixel
+- Création du vaisseau joueur pixel
 
 25/12/23 : Maximilien : (maison)
 - Ajout d'une fonction qui selectionne un vaisseau au hasard
