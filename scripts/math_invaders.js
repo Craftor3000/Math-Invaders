@@ -1,19 +1,19 @@
 /* FONCTIONS */
 
 function nb_random(n) {
-	/* paramètre : un entier fixant la borne maximum de l'aléatoire
-		résultat : un entier aléatoire entre 1 et n 
-	*/
+/*  paramètre : un entier fixant la borne maximum de l'aléatoire
+	résultat : un entier aléatoire entre 1 et n 
+*/
 	return Math.floor(Math.random() * n + 1);
 }
 
 function timer(t) {
-	/*	paramètre : un entier
-		résultat : succès de la promesse avec la valeur 1
+/*	paramètre : un entier
+	résultat : succès de la promesse avec la valeur 1
 
-		Attend un temps t avant de résoudre la promesse
-		Cette méthode est utilisée comme un timer
-	*/
+	Attend un temps t avant de résoudre la promesse
+	Cette méthode est utilisée comme un timer
+*/
     return new Promise((resolve, reject) => {
 	  	setTimeout(() => {
 	  		resolve(1);
@@ -22,11 +22,11 @@ function timer(t) {
 }
 
 function debut_jeu(){
-	/*	paramètre : aucun
-		résultat : aucun
+/*	paramètre : aucun
+	résultat : aucun
 
-		Initialise quelques valeurs avant de lancer la boucle principale du jeu
-	*/
+	Initialise quelques valeurs avant de lancer la boucle principale du jeu
+*/
 	if (!jeu_en_cours) {
 		joueur.style.visibility = "visible";
 		jeu_en_cours = true;
@@ -35,12 +35,12 @@ function debut_jeu(){
 };
 
 function fin_jeu() {
-	/*	paramètre : aucun
-		résultat : aucun
+/*	paramètre : aucun
+	résultat : aucun
 
-		Attribue à un grand nombre de variable leur valeur par défault
-		Permet au jeu de se terminer en laissant la possibilité de le recommencer
-	*/
+	Attribue à un grand nombre de variable leur valeur par défault
+	Permet au jeu de se terminer en laissant la possibilité de le recommencer
+*/
 	if (jeu_en_cours) {
 		jeu_en_cours = false;
 		boss_en_cours = false;
@@ -74,14 +74,14 @@ function fin_jeu() {
 
 
 async function main_jeu() {
-	/*	paramètre : aucun
-		résultat : aucun
+/*	paramètre : aucun
+	résultat : aucun
 
-		Boucle principale du jeu, fonctionnant jusqu'à ce qu'il se termine
-		Vérification permanente de la présence d'opérations à résoudre
-		Marque le rythme de l'avancement des vaisseaux ennemis
-		Gestion de la fin du jeu, lorsque l'avancement est trop grand
-	*/
+	Boucle principale du jeu, fonctionnant jusqu'à ce qu'il se termine
+	Vérification permanente de la présence d'opérations à résoudre
+	Marque le rythme de l'avancement des vaisseaux ennemis
+	Gestion de la fin du jeu, lorsque l'avancement est trop grand
+*/
 	while(jeu_en_cours) {
 		if (!boss_en_cours) {
 			if(resolutions == 3) {
@@ -133,34 +133,34 @@ async function main_jeu() {
 }
 
 function phases() {
-	/*	paramètre : aucun
-		résultat : aucun
+/*	paramètre : aucun
+	résultat : aucun
 
-		Marque le changement de phase
-		Augmente la vitesse des ennemis
-	*/
+	Marque le changement de phase
+	Augmente la vitesse des ennemis
+*/
 	phase++;
 	texte_banniere.textContent = "Phase " + phase.toString();
 	vitesse /= 1.5;
 }
 
 function apparition_vaisseaux() {
-	/*	paramètre : aucun
-		résultat : aucun
+/*	paramètre : aucun
+	résultat : aucun
 
-		Fait apparaitre tous les vaisseaux ennemis
-	*/
+	Fait apparaitre tous les vaisseaux ennemis
+*/
 	grp_gauche.style.visibility = "visible";
 	grp_centre.style.visibility = "visible";
 	grp_droite.style.visibility = "visible";
 }
 
 function apparition_boss() {
-	/*	paramètre : aucun
-		résultat : aucun
+/*	paramètre : aucun
+	résultat : aucun
 
-		Fait apparaitre le boss et ses composants
-	*/
+	Fait apparaitre le boss et ses composants
+*/
 	grp_boss.style.visibility = "visible";
 	boss.style.visibility = "visible";
 	boss_1.style.visibility = "visible";
@@ -171,11 +171,11 @@ function apparition_boss() {
 }
 
 function selection_vaisseau() {
-	/*	paramètre : aucun
-		résultat : aucun
+/*	paramètre : aucun
+	résultat : aucun
 
-		Choisit un vaisseau ennemi dont l'opération va être à résoudre, parmis les vaisseaux encore vivants
-	*/
+	Choisit un vaisseau ennemi dont l'opération va être à résoudre, parmis les vaisseaux encore vivants
+*/
 	while (vaisseau_choisit == null){
 		proposition_vaisseau = nb_random(3) - 1;
 		if (vaisseaus_vivants[proposition_vaisseau]) {
@@ -188,8 +188,11 @@ function selection_vaisseau() {
 }
 
 function selection_boss() {
-/*	param	 : aucun
-	resultat : une des opérations du boss est entourée en rouge, et son résultat est enregistré
+/*	paramètre : aucun
+	resultat : aucun
+
+	Une opération du boss est choisie au hasard et son résultat est enregistré dans operations_boss
+	L'opération choisie est affichée dans 'texte_commencer'
 */
 
 	while (boss_choisit == null){
@@ -204,12 +207,14 @@ function selection_boss() {
 }
 
 function validation() {
-	/*	paramètre : aucun
-		résultat : aucun
+/*	paramètre : aucun
+	résultat : aucun
 
-		Vérifie si la réponse du joueur est égale à celle demandée
-		Fait évoluer le score du joueur en fonction de la rapidité de réponse
-	*/
+	Vérifie si la réponse du joueur est égale à celle demandée
+	Fait évoluer le score du joueur en fonction de la rapidité de réponse
+	Diminue le score si la réponse est fausse
+	Empêche que le score soit négatif
+*/
 	if (reponse_joueur.valueAsNumber == operations[vaisseau_choisit][0] + operations[vaisseau_choisit][1]) {
 		elimination();
 		score.textContent = parseInt(score.textContent) + calcul_score();
@@ -225,8 +230,13 @@ function validation() {
 }
 
 function validation_boss() {
-/*	param	 : aucun
-	resultat : le score du joueur est augmenté si sa réponse est correcte, sinon il est diminué. Empêche aussi que le score est négatif
+/*	paramètre : aucun
+	resultat : aucun
+
+	Vérifie si la réponse du joueur est égale à celle demandée
+	Fait évoluer le score du joueur en fonction de la rapidité de réponse
+	Diminue le score si la réponse est fausse
+	Empêche que le score soit négatif
 */
 	if (reponse_joueur.valueAsNumber == operations_boss[boss_choisit][0] + operations_boss[boss_choisit][1]) {
  			elimination_boss();
@@ -243,11 +253,11 @@ function validation_boss() {
 }
 	
 function elimination() {
-	/*	paramètre : aucun
-		résultat : aucun
+/*	paramètre : aucun
+	résultat : aucun
 
-		Elimine un vaisseau ennemi à la suite de la résolution de son équation
-	*/
+	Elimine un vaisseau ennemi à la suite de la résolution de son équation
+*/
 	vaisseaus_vivants[vaisseau_choisit] = false;
 	groupes[proposition_vaisseau].style.border = "0px";
 	groupes[vaisseau_choisit].style.visibility = "hidden";
@@ -256,9 +266,10 @@ function elimination() {
 }
 
 function elimination_boss() {
-/*	param	 : aucun
-	resultat : l'opération actuellement choisie est rendu invisible, la variable boss_choisit est mise à 'null' pour se faire relancer par 
-			   selection_boss
+/*	paramètre : aucun
+	resultat : aucun
+	
+	Elimine une opération du boss à la suite de la résolution de son équation
 */
 	boss_vivant[boss_choisit] = false;
 	groupes_boss[proposition_boss].style.border = "0px";
@@ -269,17 +280,22 @@ function elimination_boss() {
 }
 
 function calcul_score() {
-	/*	paramètre : aucun
-		résultat : un entier compris entre 0 et phase * 100
+/*	paramètre : aucun
+	résultat : un entier compris entre 0 et phase * 100
 
-		Calcule 
-	*/
+	Calcule le score du joueur
+*/
 	let pourcentage_tps_restant = (limite_avancement - temps_vaisseau) / limite_avancement;
 	return Math.round((phase * 100) * pourcentage_tps_restant);
 }
 
 
 function affichage_operations() {
+/*	paramètre : aucun
+	résultat : aucun
+
+	Définie les opérations des vaisseaux à calculer aléatoirement
+*/
 	for (var i = 0; i < 3; i++) {
 		operations[i][0] = nb_random(10);
 		operations[i][1] = nb_random(10);
@@ -291,6 +307,11 @@ function affichage_operations() {
 };
 
 function affichage_operations_boss() {
+/*	paramètre : aucun
+	résultat : aucun
+
+	Définie les opérations du boss à calculer aléatoirement
+*/
 	for (var i = 0; i < 5; i++) {
 		operations_boss[i][0] = nb_random(10);
 		operations_boss[i][1] = nb_random(10);
@@ -304,6 +325,11 @@ function affichage_operations_boss() {
 }
 
 function avancement_vaisseaux() {
+/*	paramètre : aucun
+	résultat : aucun
+
+	Met la position verticale des vaisseaux et du boss à la valeur 'avancement'
+*/
 	avancement++;
 	temps_vaisseau++;
 	grp_gauche.style.margin = avancement.toString() + "px 0px 0px 0px";
@@ -315,17 +341,32 @@ function avancement_vaisseaux() {
 
 
 function affiche_regles() {
+/*	paramètre : aucun
+	résultat : aucun
+
+	Rend l'espace de jeu et l'espace des paramètres invisibles
+*/
 	f_regles.style.visibility = "visible";
 	f_jeu.style.visibility = "hidden";
 	f_parametres.style.visibility = "hidden";
 	fin_jeu();
 };
 function affiche_jeu() {
+/*	paramètre : aucun
+	résultat : aucun
+
+	Rend l'espace des règles et l'espace des paramètres invisibles
+*/
 	f_regles.style.visibility = "hidden";
 	f_jeu.style.visibility = "visible";
 	f_parametres.style.visibility = "hidden";
 };
 function affiche_parametres() {
+/*	paramètre : aucun
+	résultat : aucun
+
+	Rend l'espace de jeu et l'espace des règles invisibles
+*/
 	f_regles.style.visibility = "hidden";
 	f_jeu.style.visibility = "hidden";
 	f_parametres.style.visibility = "visible";
@@ -333,6 +374,11 @@ function affiche_parametres() {
 };
 
 async function demo(){
+/*	paramètre : aucun
+	résultat : aucun
+
+	Fait bouger le vaisseau ennemi sur l'espace des règles
+*/
 	let avance = 0;
 	while (avance < 400){
 		avance += 10
