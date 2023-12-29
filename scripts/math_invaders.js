@@ -139,11 +139,7 @@ function phases() {
 */
 	phase++;
 	texte_banniere.textContent = "Phase " + phase.toString();
-	if (vitesse > 30) {
-		vitesse /= 1.2;
-	} else {
-		vitesse /= 1.4;
-	}
+	vitesse /= 1.2;
 	if (phase % 5 == 0) {
 		vitesse += 100 / (phase * 2);
 	}
@@ -187,7 +183,7 @@ function selection_vaisseau() {
 			groupes[proposition_vaisseau].style.border = "1px solid red";
 			reponse_joueur.focus();
 			vaisseau_choisit = proposition_vaisseau;
-			texte_commencer.textContent = operations[vaisseau_choisit][0].toString() + " + " + operations[vaisseau_choisit][1].toString();
+			texte_commencer.textContent = operations[vaisseau_choisit][0].toString() + type_operation + operations[vaisseau_choisit][1].toString();
 		}
 	}
 }
@@ -206,7 +202,7 @@ function selection_boss() {
 			groupes_boss[proposition_boss].style.border = "1px solid red";
 			reponse_joueur.focus();
 			boss_choisit = proposition_boss;
-			texte_commencer.textContent = operations_boss[boss_choisit][0].toString() + " + " + operations_boss[boss_choisit][1].toString();
+			texte_commencer.textContent = operations_boss[boss_choisit][0].toString() + type_operation + operations_boss[boss_choisit][1].toString();
 		}
 	}
 }
@@ -220,7 +216,13 @@ function validation() {
 	Diminue le score si la réponse est fausse
 	Empêche que le score soit négatif
 */
-	if (reponse_joueur.valueAsNumber == operations[vaisseau_choisit][0] + operations[vaisseau_choisit][1]) {
+	let attendu = 0
+	if (type_operation == " + ") {
+		attendu = operations[vaisseau_choisit][0] + operations[vaisseau_choisit][1]
+	} else {
+		attendu = operations[vaisseau_choisit][0] * operations[vaisseau_choisit][1]
+	}
+	if (reponse_joueur.valueAsNumber == attendu) {
 		elimination();
 		score.textContent = parseInt(score.textContent) + calcul_score();
 		temps_vaisseau = 0;
@@ -243,7 +245,13 @@ function validation_boss() {
 	Diminue le score si la réponse est fausse
 	Empêche que le score soit négatif
 */
-	if (reponse_joueur.valueAsNumber == operations_boss[boss_choisit][0] + operations_boss[boss_choisit][1]) {
+	let attendu = 0
+	if (type_operation == " + ") {
+		attendu = operations_boss[boss_choisit][0] + operations_boss[boss_choisit][1]
+	} else {
+		attendu = operations_boss[boss_choisit][0] * operations_boss[boss_choisit][1]
+	}
+	if (reponse_joueur.valueAsNumber == attendu) {
  			elimination_boss();
 			score.textContent = parseInt(score.textContent) + calcul_score() * 2;
 			temps_vaisseau = 0;
@@ -305,9 +313,9 @@ function affichage_operations() {
 		operations[i][0] = nb_random(nombre_choisi);
 		operations[i][1] = nb_random(nombre_choisi);
 	};
-	gauche.textContent = operations[0][0].toString() + " + " + operations[0][1].toString();
-	centre.textContent = operations[1][0].toString() + " + " + operations[1][1].toString();
-	droite.textContent = operations[2][0].toString() + " + " + operations[2][1].toString();
+	gauche.textContent = operations[0][0].toString() + type_operation + operations[0][1].toString();
+	centre.textContent = operations[1][0].toString() + type_operation + operations[1][1].toString();
+	droite.textContent = operations[2][0].toString() + type_operation + operations[2][1].toString();
 	vaisseaus_vivants = [true, true, true];
 };
 
@@ -318,14 +326,14 @@ function affichage_operations_boss() {
 	Définie les opérations du boss à calculer aléatoirement
 */
 	for (var i = 0; i < 5; i++) {
-		operations_boss[i][0] = nb_random(10);
-		operations_boss[i][1] = nb_random(10);
+		operations_boss[i][0] = nb_random(nombre_choisi);
+		operations_boss[i][1] = nb_random(nombre_choisi);
 	};
-	boss_1.textContent = operations_boss[0][0].toString() + " + " + operations_boss[0][1].toString();
-	boss_2.textContent = operations_boss[1][0].toString() + " + " + operations_boss[1][1].toString();
-	boss_3.textContent = operations_boss[2][0].toString() + " + " + operations_boss[2][1].toString();
-	boss_4.textContent = operations_boss[3][0].toString() + " + " + operations_boss[3][1].toString();
-	boss_5.textContent = operations_boss[4][0].toString() + " + " + operations_boss[4][1].toString();
+	boss_1.textContent = operations_boss[0][0].toString() + type_operation + operations_boss[0][1].toString();
+	boss_2.textContent = operations_boss[1][0].toString() + type_operation + operations_boss[1][1].toString();
+	boss_3.textContent = operations_boss[2][0].toString() + type_operation + operations_boss[2][1].toString();
+	boss_4.textContent = operations_boss[3][0].toString() + type_operation + operations_boss[3][1].toString();
+	boss_5.textContent = operations_boss[4][0].toString() + type_operation + operations_boss[4][1].toString();
 	boss_vivant = [true, true, true, true, true];
 }
 
@@ -407,32 +415,49 @@ function mode_difficile() {
 /*	paramètre : aucun
 	résultat : aucun
 
-	modifie valeur variable vitesse à 0 
+	Augmente le nombre maximal dans les opérations à 30
 */
-	vitesse = 80;
 	nombre_choisi = 30
+	facile.style.background = "#806FA5";
+	moyen.style.background = "#806FA5";
+	difficile.style.background = "#A396C2";
 };
 
 function mode_moyen() {
 /*	paramètre : aucun
 	résultat : aucun
 
-	modifie valeur variable vitesse à 0 
+	Augmente le nombre maximal dans les opérations à 20
 */
-	vitesse = 300;
 	nombre_choisi = 20
+	facile.style.background = "#806FA5";
+	moyen.style.background = "#A396C2";
+	difficile.style.background = "#806FA5";
 };
 
 function mode_facile() {
 /*	paramètre : aucun
 	résultat : aucun
 
-	modifie valeur variable vitesse à 0 
+	Augmente le nombre maximal dans les opérations à 10
 */
-	vitesse = 1000;
-	nombre_choisi = 10
+	nombre_choisi = 10;
+	facile.style.background = "#A396C2";
+	moyen.style.background = "#806FA5";
+	difficile.style.background = "#806FA5";
 };
 
+function mode_additions() {
+	type_operation = " + ";
+	additions.style.background = "#A396C2";
+	multiplications.style.background = "#806FA5";
+}
+
+function mode_multiplications() {
+	type_operation = " x ";
+	additions.style.background = "#806FA5";
+	multiplications.style.background = "#A396C2";
+}
 
 
 
@@ -488,14 +513,19 @@ const groupes_boss = [boss_1, boss_2, boss_3, boss_4, boss_5];
 const difficile = document.querySelector("#difficile");
 const moyen = document.querySelector("#moyen");
 const facile = document.querySelector("#facile");
+const additions = document.querySelector("#additions");
+const multiplications = document.querySelector("#multiplications");
 
 // Variables autres
 var demo_en_cours = true;
 var jeu_en_cours = false;
 var boss_en_cours = false;
 var phase = 0;
+var vitesse = 1000;
+mode_facile();
 var operations = [[0,0],[0,0],[0,0]];
 var operations_boss = [[0,0],[0,0],[0,0],[0,0],[0,0]]
+mode_additions();
 var avancement = 0;
 var temps_vaisseau = 0;
 var limite_avancement = 430;
@@ -509,7 +539,6 @@ var proposition_boss = 0;
 var hi_score = 0;
 
 // Ecouteurs d'évènement
-document.addEventListener("DOMContentLoaded",demo);
 regles.addEventListener("click", affiche_regles);
 jeu.addEventListener("click", affiche_jeu);
 parametres.addEventListener("click", affiche_parametres);
@@ -518,6 +547,8 @@ valider.addEventListener("click", validation);
 difficile.addEventListener("click", mode_difficile );
 moyen.addEventListener("click", mode_moyen );
 facile.addEventListener("click", mode_facile );
+additions.addEventListener("click" , mode_additions);
+multiplications.addEventListener("click", mode_multiplications);
 
 reponse_joueur.addEventListener("keydown", (e) => {
 	if (e.key == "Enter") {
@@ -529,3 +560,5 @@ reponse_joueur.addEventListener("keydown", (e) => {
 		} 
 	};
 });
+
+demo();

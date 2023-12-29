@@ -4,6 +4,10 @@ body {
 	overflow: hidden;
 }
 
+p , h2 {
+	font-family: Avenir, sans-serif;
+}
+
 nav {
 	width: 100%;
 	height: 10%;
@@ -111,6 +115,10 @@ thead, tfoot {
 #f_parametres {
 	background-image: url("../images/fond_du_accueil.jpg");
 	visibility: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
 }
 
 
@@ -148,7 +156,7 @@ thead, tfoot {
 	background-color: #708bb8;
 	border-radius: 10px;
 	margin-left: 10px;
-	padding-top: 30px;
+	padding-top: 20px;
 	color: white;
 	font-family: monospace;
 }
@@ -191,10 +199,13 @@ thead, tfoot {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	color: royalblue;
+	color: black;
 }
 #operation_boss > p {
-	margin: 30px;
+	font-weight: bold;
+	margin: 30px 15px;
+	width: 70px;
+	height: 20px;
 }
 #grp_gauche , #grp_centre , #grp_droite {
 	position: absolute;
@@ -212,10 +223,12 @@ thead, tfoot {
 	margin: 0px 20px;
 }
 #operation_gauche , #operation_centre , #operation_droite {
+	font-weight: bold;
 	position: absolute;
 	z-index: 10;
 	top: 0px;
 	width: 70px;
+	font-size: 13px;
 }
 #grp_gauche {
 	left: 5%;
@@ -271,34 +284,39 @@ thead, tfoot {
 	width: 400px;
 }
 
-#boutons {
-	height: 100px;
-	width: 100px;
 
-}
-
-#f_parametres{
-	position: absolute;
-	top: 0px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: white;
-}
 /* définit la taille des boutons */
-#f_parametres > div {
-	max-width: 20%;
+#difficulte , #type_operation {
+	position: absolute;
+	top: 10px;
+	width: 100%;
+	height: 30%;
+	padding-left: 100px;
+	color: black;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+}
+
+#type_operation {
+	top: 200px;
+}
+
+#difficulte > div , #type_operation > div {
+	position: sticky;
+	bottom: 0px;
+	min-height: 80px;
 	min-width: 100px;
-	height: 40px;
-	margin: auto;
-	background-color: #F5F6CE;
+	padding: 1px 20px;
+	margin: 10px 50px;
+	background-color: #806FA5;
 	border-radius: 15px;
 	text-align: center;
 	color: #380B61;
 }
-#f_parametres > div:hover {
-	background-color: #A396C2;
+
+#css-validator {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
 }
-
-
-

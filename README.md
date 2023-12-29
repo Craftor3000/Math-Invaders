@@ -117,21 +117,51 @@ ARTICLE
 |    |    |    | - #text: Votre meilleur score :
 |    |    | - P id="meilleur_score"
 |    |    |    | - #text: 0
-| - DIV id="f_parametres" (-> const f_parametres)
-|    | - INPUT type="range" min="1" max="100" value="50" class="slider" id="myRange"
-|    | - P
-|    |    | - #text: Value:
-|    |    | - SPAN id="myValue"
-|    |    |    | - #text: 50
-|    | - P
+| - DIV id="f_parametres"
+|    | - DIV id="difficulte"
+|    |    | - H2
+|    |    |    | - #text: Difficulté
+|    |    | - DIV id="facile"
+|    |    |    | - P
+|    |    |    |   | - #text: FACILE
+|    |    |    | - P
+|    |    |    |   | - #text: (1 - 10)
+|    |    | - DIV id="moyen"
+|    |    |    | - P
+|    |    |    |   | - #text: MOYEN
+|    |    |    | - P
+|    |    |    |   | - #text: (1 - 20)
+|    |    | - DIV id="difficile"
+|    |    |    | - P
+|    |    |    |   | - #text: DIFFICILE
+|    |    |    | - P
+|    |    |    |   | - #text: (1 - 30)
+|    | - DIV id="type_operation"
+|    |    | - H2
+|    |    |    | - #text: Type d'opération
+|    |    | - DIV id="additions"
+|    |    |    | - P
+|    |    |    |   | - #text: ADDITIONS
+|    |    |    | - P
+|    |    |    |   | - #text: CP - CE1
+|    |    | - DIV id="multiplications"
+|    |    |    | - P
+|    |    |    |   | - #text: MULTIPLICATIONS
+|    |    |    | - P
+|    |    |    |   | - #text: CE2 et +
+|    | - P id="css-validator"
 |    |    | - A href="http://jigsaw.w3.org/css-validator/check/referer"
-|    |    |    | - IMG style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valide !"
+|    |    |   | - IMG style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valide !"
 
 
 ### Patch note
 29/12/23 : Clément : (maison)
 - Correction de la position des vaisseaux de présentation
 - Correction de l'affichage des background
+- Correction de la vitesse des vaisseaux ennemis
+- Ajout des paramètres de la difficulté et du type d'opération
+- Ajout d'une police d'écriture sans-serif pour une meilleure lecture des enfants
+- Mise en gras des opérations pour plus de lisibilité
 
 28/12/23 : Clément : (maison)
 - Ajout d'une animation présentant le jeu sur l'écran des règles
