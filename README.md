@@ -121,17 +121,17 @@ ARTICLE
 |    | - DIV id="difficulte"
 |    |    | - H2
 |    |    |    | - #text: Difficulté
-|    |    | - DIV id="facile"
+|    |    | - DIV id="facile" (-> const facile)
 |    |    |    | - P
 |    |    |    |   | - #text: FACILE
 |    |    |    | - P
 |    |    |    |   | - #text: (1 - 10)
-|    |    | - DIV id="moyen"
+|    |    | - DIV id="moyen" (-> const moyen)
 |    |    |    | - P
 |    |    |    |   | - #text: MOYEN
 |    |    |    | - P
 |    |    |    |   | - #text: (1 - 20)
-|    |    | - DIV id="difficile"
+|    |    | - DIV id="difficile" (-> const difficile)
 |    |    |    | - P
 |    |    |    |   | - #text: DIFFICILE
 |    |    |    | - P
@@ -139,12 +139,12 @@ ARTICLE
 |    | - DIV id="type_operation"
 |    |    | - H2
 |    |    |    | - #text: Type d'opération
-|    |    | - DIV id="additions"
+|    |    | - DIV id="additions" (-> const additions)
 |    |    |    | - P
 |    |    |    |   | - #text: ADDITIONS
 |    |    |    | - P
 |    |    |    |   | - #text: CP - CE1
-|    |    | - DIV id="multiplications"
+|    |    | - DIV id="multiplications" (-> const multiplications)
 |    |    |    | - P
 |    |    |    |   | - #text: MULTIPLICATIONS
 |    |    |    | - P
