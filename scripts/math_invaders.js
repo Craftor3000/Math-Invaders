@@ -27,6 +27,7 @@ function debut_jeu(){
 
 	Initialise quelques valeurs avant de lancer la boucle principale du jeu
 */
+	console.log(limite_avancement)
 	if (!jeu_en_cours) {
 		joueur.style.visibility = "visible";
 		score.textContent = "0";
@@ -101,10 +102,12 @@ async function main_jeu() {
 			boss.style.visibility = "hidden";
 			if (phase % 5 == 0) {
 				boss_en_cours = true;
+				limite_avancement = 275;
 				affichage_operations_boss();
 				apparition_boss();
 			} 
 			else {
+				limite_avancement = 430;
 				affichage_operations();
 				apparition_vaisseaux();
 			}
@@ -117,11 +120,6 @@ async function main_jeu() {
 		}
 
 		avancement_vaisseaux();
-		if (boss_en_cours) {
-			limite_avancement = (espace.offsetHeight * 0.95) - 300;
-		} else {
-			limite_avancement = (espace.offsetHeight * 0.95) - 165;
-		}
 
 		await timer(vitesse);
 
@@ -142,13 +140,12 @@ function phases() {
 	phase++;
 	texte_banniere.textContent = "Phase " + phase.toString();
 	if (vitesse > 30) {
-		vitesse /= 1.5;
+		vitesse /= 1.2;
+	} else {
+		vitesse /= 1.4;
 	}
 	if (phase % 5 == 0) {
-		vitesse -= 10;
-	}
-	if (phase % 5 == 1) {
-		vitesse += 10;
+		vitesse += 100 / (phase * 2);
 	}
 }
 
@@ -229,7 +226,7 @@ function validation() {
 		temps_vaisseau = 0;
 	}
 	else {
-		score.textContent = parseInt(score.textContent) - calcul_score();
+		score.textContent = parseInt(score.textContent) - (phase * 100);
 	}
 	reponse_joueur.valueAsNumber = NaN;
 	if (parseInt(score.textContent) < 0){
@@ -252,7 +249,7 @@ function validation_boss() {
 			temps_vaisseau = 0;
 		}
 		else {
-			score.textContent = parseInt(score.textContent) - calcul_score();
+			score.textContent = parseInt(score.textContent) - (phase * 50) - Math.round(calcul_score() / 2);
 		}
 	reponse_joueur.valueAsNumber = NaN;
 	if (parseInt(score.textContent) < 0){
@@ -354,8 +351,10 @@ function affiche_regles() {
 
 	Rend l'espace de jeu et l'espace des paramètres invisibles
 */
-	fenetre = [true, false, false];
-	demo();
+	if (!demo_en_cours) {
+		demo_en_cours = true;
+		demo();
+	}
 	f_regles.style.visibility = "visible";
 	f_jeu.style.visibility = "hidden";
 	f_parametres.style.visibility = "hidden";
@@ -367,7 +366,7 @@ function affiche_jeu() {
 
 	Rend l'espace des règles et l'espace des paramètres invisibles
 */
-	fenetre = [false, true, true];
+	demo_en_cours = false;
 	f_regles.style.visibility = "hidden";
 	f_jeu.style.visibility = "visible";
 	f_parametres.style.visibility = "hidden";
@@ -378,7 +377,7 @@ function affiche_parametres() {
 
 	Rend l'espace de jeu et l'espace des règles invisibles
 */
-	fenetre = [false, false, true];
+	demo_en_cours = false;
 	f_regles.style.visibility = "hidden";
 	f_jeu.style.visibility = "hidden";
 	f_parametres.style.visibility = "visible";
@@ -389,10 +388,10 @@ async function demo(){
 /*	paramètre : aucun
 	résultat : aucun
 
-	Fait bouger le vaisseau ennemi sur l'espace des règles
+	Fait bouger les vaisseaux ennemis de démonstration sur l'espace des règles
 */
 	let avance = 0;
-	while (fenetre[0]){
+	while (demo_en_cours){
 		avance += 1
 		for (let i = ennemi_demo.length - 1; i >= 0; i--) {
 			ennemi_demo[i].style.margin = avance.toString() + "px 20px 0px 20px";
@@ -403,6 +402,8 @@ async function demo(){
 		}
 	}
 }
+
+
 
 
 /* MAIN */
@@ -451,7 +452,7 @@ const boss_5 = document.querySelector("#boss_5");
 const groupes_boss = [boss_1, boss_2, boss_3, boss_4, boss_5];
 
 // Variables autres
-var fenetre = [true, false, false];
+var demo_en_cours = true;
 var jeu_en_cours = false;
 var boss_en_cours = false;
 var phase = 0;
@@ -460,7 +461,7 @@ var operations = [[0,0],[0,0],[0,0]];
 var operations_boss = [[0,0],[0,0],[0,0],[0,0],[0,0]]
 var avancement = 0;
 var temps_vaisseau = 0;
-var limite_avancement = (espace.offsetHeight * 0.95) - 165;
+var limite_avancement = 430;
 var resolutions = 3;
 var vaisseau_choisit = null;
 var boss_choisit = null;

@@ -24,11 +24,20 @@ La partie se termine lorsqu'un vaisseau alien parvient à toucher le vaisseau du
      style="width: 100px; height: 100px;" />
 
 ### Solutions techniques
-- Pour l'affichage des différents menus, nous avons créé 3 divs qui regroupent les éléments que du menu. On les fait apparaitre et disparaitre selon
-la page que l'on veut afficher.
-La fonction debut_jeu() enclenche les méchanisme principaux du jeu, en mettant le score à 0, en rendant le joueur visible et en rendant la variable jeu_en_cours true. Cette fonction ne s'active que quand jeu_en_cours est false. Elle active la fonction main_jeu().
-- main_jeu() est une boucle while qui appelle les fonctions nécessaires à la bonne conduites du jeu. Elle vérifie si la vague actuelle d'ennemi est  présente ou pas. Si ce n'est pas le cas, elle la fait apparaitre, avec ses opérations choisies aléatoirement par la fonction affichage_operation(). Si 5 vagues on été battue, le boss apparait, avec ses opérations choisies aléatoirement par la fonction affichage_operation_boss(). Ensuite, une opérations, du boss ou des vaisseaux, est choisie au hasard par la fonction selection_vaisseau() ou selection_boss(), respectivement. Ensuite la fonction avancement_vaisseau() fais avancer les vaisseaux. Elle est appelée souvent grâce à un timer créé par la fonction timer(). Si un vaisseau atteint le seuil d'avancement. La fonction fin_jeu() est activée.
-- La fonction fin_jeu() remet toutes les variables à leurs états initiaux, le high-score est enregistré et affiché.
+
+Pour l'affichage des différents menus, 3 div ont été utilisé pour regrouper les éléments de chaque menu. Elles apparaissent et disparaissent selon le bouton de navigation appuyé.
+
+Lors de l'appui du bouton de commencement du jeu, la fonction debut_jeu() enclenche les méchanisme principaux du jeu, en mettant le score à 0, en rendant le joueur visible et en déclarant le jeu commencé. Cette fonction ne s'active que quand le jeu n'est pas déjà en cours. Elle active par la suite la fonction main_jeu().
+La fonction main_jeu() est la boucle principale du jeu, tournant jusqu'à ce que le jeu s'arrête. Elle est composée d'une boucle while qui appelle les fonctions nécessaires à la bonne conduites du jeu en permanence.
+Parmis ces dernières, elle vérifie si une vague d'ennemis est bien en cours. Si ce n'est pas le cas, elle la fait apparaitre avec la fonction apparition_vaisseaux(), et choisit ses opérations aléatoirement par la fonction affichage_operation(). Une de ces opérations est alors choisie au hasard par la fonction selection_vaisseau(). 
+Lors de la validation d'une réponse de l'utilisateur, la fonction validation() vérifie la validité de la réponse et en répercute le score. Si la réponse est bonne, le vaisseau concerné est éliminé par la fonction elimination(), et le score du joueur augmente en fonction du temps mis à répondre. A l'inverse, si la réponse est fausse, le score diminue.
+Si 5 vagues on été battues, un boss apparaitra. Il possède des fonctions très similaires aux noms quasiment identiques aux vaisseaux normaux ( affichage_operations_boss() , apparition_boss() , selection_boss() , validation_boss() , elimination_boss() ). Ainsi, le combat contre le boss se passera comme celui des vaisseaux, mais avec 5 opérations au total au lieu de 3. Cependant, le boss est légèrement plus lent que les vaisseaux normaux. A la suite du boss, les vaisseaux ennemis seront légèrement plus lents.
+A chaque itération de la boucle principale de la fonction main_jeu(), la fonction avancement_vaisseaux() fait descendre un peu plus les vaisseaux ennemis. Pour cela, la propriété de style margin-top est incrémentée de 1.
+Afin de brider la vitesse de la boucle de main_jeu(), à chaque itération de cette dernière, la fonction timer() est attendue avant de continuer l'exécution de la suite de la boucle.
+Le jeu se termine lorsqu'un vaisseau ennemi touche, ou arrive à la hauteur du vaisseau du joueur. Cette valeur de hauteur a été définie préalablement pour garantir une meilleure expérience de jeu. Ainsi, la fonction fin_jeu() est appelée et remet toutes les variables à leur état initial tandis que le meilleur score est enregistré et affiché, si il est meilleur que le précédent.
+
+
+##### DOM
 
 ARTICLE
 | - DIV id="f_regles" (-> const f_regles)
@@ -119,23 +128,23 @@ ARTICLE
 |    |    |    | - IMG style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valide !"
 
 
-
-
-Pour les opérations, on choisit deux nombres au hasard, qui vont être mis dans un tableau qui désigne un vaisseau, qui est mis dans un tableau qui
-regroupe toutes les opérations.
-Pour le mouvement des vaisseaux, on ajoute un nombre au margin des images
-
-
 ### Patch note
+29/12/23 : Clément : (maison)
+- Correction de la position des vaisseaux de présentation
+- Correction de l'affichage des background
+
 28/12/23 : Clément : (maison)
 - Ajout d'une animation présentant le jeu sur l'écran des règles
 - Ajout des images des ennemis et du boss
 - Optimisation des vérifications de la boucle principale du jeu
 - Alignement des composants du boss
 - Rédaction du DOM
+- Rédaction des solutions techniques
 - Optimisations des variables utilisées
 - Rangement des déclarations de variables
-- Ajout de quelques commentaires pour une meilleure compréhension 
+- Ajout de quelques commentaires pour une meilleure compréhension
+- Changement des valeurs d'évolution de la vitesse
+- Correction d'un bug dédoublant les vaisseaux de démonstration
 
 28/12/23 : Maximilien : (maison)
 - Ajout des spécification de certaines fonctions
