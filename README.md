@@ -156,6 +156,7 @@ ARTICLE
 - Ajout des règles dans la page d'accueil
 - Correction de bug dans la page paramètre 
 - Ajout de bouton pour régler la difficulté
+- ajout de la modification des additions dans paramètre
 
 27/12/23 : Maximilien : (maison)
 - Ajout de fonctions servant au fonctionnement du boss (verification_boss, selection_boss, elimination_boss)
