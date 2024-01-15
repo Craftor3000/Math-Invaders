@@ -155,6 +155,9 @@ ARTICLE
 
 
 ### Patch note
+15/01/24 : Clément : (maison)
+- Optimisation massive du code avec la suppression de toutes les fonctions dupliquées dédiées aux boss
+
 29/12/23 : Clément : (maison)
 - Correction de la position des vaisseaux de présentation
 - Correction de l'affichage des background
